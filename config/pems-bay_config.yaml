@@ -1,0 +1,64 @@
+# 🔧 修正后的配置文件
+data:
+  datapath: "/root/ggg/DATA/data"
+  train_cities: ["metr-la", "chengdu", "shenzhen"] 
+  target_city: "pems-bay"
+  seq_len: 12
+  horizons: [3, 6, 12]  # 恢复多horizon
+  steps_per_day: 288
+  adaptation_days: 3
+  
+model:
+  n_layer: 6              # 保持原始成功配置
+  n_head: 4               
+  n_embd: 64              # 保持原始维度
+  dropout: 0.1            
+  bias: false
+  n_linear: 1
+  
+  input_dim: 2            # 🔧 关键修正：恢复为2
+  tod_embedding_dim: 8    
+  dow_embedding_dim: 4    
+  spatial_embedding_dim: 8   # 恢复原始配置
+  adaptive_embedding_dim: 8 # 恢复原始配置
+  output_dim: 1
+  
+  temporal_layers: 1      # 恢复原始配置
+  spatial_layers: 1
+  
+  blocksize: 8            
+  blocknum: 4            
+  factors: 1
+
+optimization:
+  meta_lr: 0.00005        # 保持原始学习率
+  update_lr: 0.001
+  meta_epochs: 5
+  city_epochs: 1
+  test_epochs: 50
+  batch_size: 32
+  grad_clip: 1.0          
+  weight_decay: 0.001
+  
+  # 🔧 保守的效率优化
+  use_lora: true
+  lora_rank: 32           # 增大rank，避免过度压缩
+  use_flash_attn: false   # 暂时关闭，避免数值问题
+  gradient_checkpointing: false
+  mixed_precision: true  # 关闭混合精度，确保稳定性
+  dtype: "float32"
+
+training:
+  seed: 42
+  cuda: "2"
+  eval_interval: 2
+  eval_only: false
+  enable_significance_test: true
+  num_test_runs: 5
+  domain_specific_params: ["value_mlp", "value_transform"]
+
+output:
+  out_dir: "out/improved_main"
+  log_dir: "logs"
+  save_best: true
+  save_last: true

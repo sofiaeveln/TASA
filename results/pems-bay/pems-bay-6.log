@@ -1,0 +1,443 @@
+nohup: 忽略输入
+2025-06-06 21:22:23 INFO     Configuration loaded:
+2025-06-06 21:22:23 INFO     {'data': {'datapath': '/root/ggg/DATA/data', 'train_cities': ['metr-la', 'chengdu', 'shenzhen'], 'target_city': 'pems-bay', 'seq_len': 12, 'horizons': [6], 'steps_per_day': 288, 'adaptation_days': 3}, 'model': {'n_layer': 6, 'n_head': 4, 'n_embd': 64, 'dropout': 0.1, 'bias': False, 'n_linear': 1, 'input_dim': 2, 'tod_embedding_dim': 8, 'dow_embedding_dim': 4, 'spatial_embedding_dim': 8, 'adaptive_embedding_dim': 8, 'output_dim': 1, 'temporal_layers': 1, 'spatial_layers': 1, 'blocksize': 8, 'blocknum': 4, 'factors': 1}, 'optimization': {'meta_lr': 5e-05, 'update_lr': 0.001, 'meta_epochs': 5, 'city_epochs': 1, 'test_epochs': 50, 'batch_size': 32, 'grad_clip': 1.0, 'weight_decay': 0.001, 'use_lora': True, 'lora_rank': 32, 'use_flash_attn': False, 'gradient_checkpointing': False, 'mixed_precision': True, 'dtype': 'float32'}, 'training': {'seed': 42, 'cuda': '1', 'eval_interval': 2, 'eval_only': False, 'enable_significance_test': True, 'num_test_runs': 5, 'domain_specific_params': ['value_mlp', 'value_transform']}, 'output': {'out_dir': 'out/improved_main', 'log_dir': 'logs', 'save_best': True, 'save_last': True}}
+2025-06-06 21:22:23 INFO     使用input_dim=2，只使用交通数据特征
+2025-06-06 21:22:23 INFO     自动生成时间特征: TOD=8, DOW=4
+2025-06-06 21:22:49 INFO     Using limited data for target city pems-bay: 3 days for adaptation
+2025-06-06 21:23:43 INFO     Maximum blocknum across cities: 79
+2025-06-06 21:23:43 INFO     Parameter groups - Shared: 12, Private: 44, Domain-specific: 0
+2025-06-06 21:23:43 INFO     Model initialized with 0.25M parameters
+2025-06-06 21:23:43 INFO     Parameter groups - Shared: 12, Private: 44, Domain-specific: 0
+2025-06-06 21:23:43 INFO     Model initialized with 0.21M parameters
+2025-06-06 21:23:45 INFO     Parameter groups - Shared: 12, Private: 44, Domain-specific: 0
+2025-06-06 21:23:45 INFO     Model initialized with 0.24M parameters
+2025-06-06 21:23:45 INFO     Parameter groups - Shared: 12, Private: 44, Domain-specific: 0
+2025-06-06 21:23:45 INFO     Model initialized with 0.25M parameters
+2025-06-06 21:23:45 INFO     Parameter groups - Shared: 12, Private: 44, Domain-specific: 0
+2025-06-06 21:23:45 INFO     Model initialized with 0.22M parameters
+2025-06-06 21:23:45 INFO     ========== Meta Epoch 1/5 ==========
+2025-06-06 21:23:45 INFO     MetaEpoch: 1, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:24:13 INFO     MetaEpoch: 1, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:24:47 INFO     MetaEpoch: 1, City: shenzhen, CityEpoch: 1/1
+2025-06-06 21:25:29 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 1/50
+2025-06-06 21:25:31 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 2/50
+2025-06-06 21:25:36 INFO     Test_epoch 2, Horizon 6: Val MAE 1.81988, Val MAPE 3.42%
+2025-06-06 21:25:36 INFO     Saving best checkpoint to out/improved_main/pems-bay-s42_best.pth
+2025-06-06 21:25:36 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 3/50
+2025-06-06 21:25:37 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 4/50
+2025-06-06 21:25:42 INFO     Test_epoch 4, Horizon 6: Val MAE 1.68382, Val MAPE 3.02%
+2025-06-06 21:25:42 INFO     Saving best checkpoint to out/improved_main/pems-bay-s42_best.pth
+2025-06-06 21:25:42 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 5/50
+2025-06-06 21:25:44 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 6/50
+2025-06-06 21:25:49 INFO     Test_epoch 6, Horizon 6: Val MAE 1.64614, Val MAPE 2.96%
+2025-06-06 21:25:49 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 7/50
+2025-06-06 21:25:50 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 8/50
+2025-06-06 21:25:55 INFO     Test_epoch 8, Horizon 6: Val MAE 1.62854, Val MAPE 2.95%
+2025-06-06 21:25:55 INFO     Saving best checkpoint to out/improved_main/pems-bay-s42_best.pth
+2025-06-06 21:25:55 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 9/50
+2025-06-06 21:25:56 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 10/50
+2025-06-06 21:26:02 INFO     Test_epoch 10, Horizon 6: Val MAE 1.63504, Val MAPE 2.96%
+2025-06-06 21:26:02 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 11/50
+2025-06-06 21:26:03 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 12/50
+2025-06-06 21:26:08 INFO     Test_epoch 12, Horizon 6: Val MAE 1.65298, Val MAPE 2.96%
+2025-06-06 21:26:08 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 13/50
+2025-06-06 21:26:09 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 14/50
+2025-06-06 21:26:14 INFO     Test_epoch 14, Horizon 6: Val MAE 1.62287, Val MAPE 2.96%
+2025-06-06 21:26:14 INFO     Saving best checkpoint to out/improved_main/pems-bay-s42_best.pth
+2025-06-06 21:26:14 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 15/50
+2025-06-06 21:26:15 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 16/50
+2025-06-06 21:26:20 INFO     Test_epoch 16, Horizon 6: Val MAE 1.63808, Val MAPE 2.98%
+2025-06-06 21:26:20 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 17/50
+2025-06-06 21:26:22 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 18/50
+2025-06-06 21:26:26 INFO     Test_epoch 18, Horizon 6: Val MAE 1.78485, Val MAPE 3.18%
+2025-06-06 21:26:26 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 19/50
+2025-06-06 21:26:28 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 20/50
+2025-06-06 21:26:33 INFO     Test_epoch 20, Horizon 6: Val MAE 1.65452, Val MAPE 2.99%
+2025-06-06 21:26:33 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 21/50
+2025-06-06 21:26:34 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 22/50
+2025-06-06 21:26:39 INFO     Test_epoch 22, Horizon 6: Val MAE 1.63990, Val MAPE 2.96%
+2025-06-06 21:26:39 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 23/50
+2025-06-06 21:26:40 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 24/50
+2025-06-06 21:26:45 INFO     Test_epoch 24, Horizon 6: Val MAE 1.66737, Val MAPE 3.04%
+2025-06-06 21:26:45 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 25/50
+2025-06-06 21:26:46 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 26/50
+2025-06-06 21:26:51 INFO     Test_epoch 26, Horizon 6: Val MAE 1.66069, Val MAPE 2.98%
+2025-06-06 21:26:51 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 27/50
+2025-06-06 21:26:53 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 28/50
+2025-06-06 21:26:58 INFO     Test_epoch 28, Horizon 6: Val MAE 1.65017, Val MAPE 3.01%
+2025-06-06 21:26:58 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 29/50
+2025-06-06 21:26:59 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 30/50
+2025-06-06 21:27:04 INFO     Test_epoch 30, Horizon 6: Val MAE 1.66102, Val MAPE 3.04%
+2025-06-06 21:27:04 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 31/50
+2025-06-06 21:27:06 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 32/50
+2025-06-06 21:27:11 INFO     Test_epoch 32, Horizon 6: Val MAE 1.68508, Val MAPE 3.09%
+2025-06-06 21:27:11 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 33/50
+2025-06-06 21:27:12 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 34/50
+2025-06-06 21:27:17 INFO     Test_epoch 34, Horizon 6: Val MAE 1.67020, Val MAPE 3.06%
+2025-06-06 21:27:17 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 35/50
+2025-06-06 21:27:19 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 36/50
+2025-06-06 21:27:24 INFO     Test_epoch 36, Horizon 6: Val MAE 1.64634, Val MAPE 2.98%
+2025-06-06 21:27:24 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 37/50
+2025-06-06 21:27:25 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 38/50
+2025-06-06 21:27:31 INFO     Test_epoch 38, Horizon 6: Val MAE 1.65488, Val MAPE 3.03%
+2025-06-06 21:27:31 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 39/50
+2025-06-06 21:27:32 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 40/50
+2025-06-06 21:27:37 INFO     Test_epoch 40, Horizon 6: Val MAE 1.65596, Val MAPE 2.99%
+2025-06-06 21:27:37 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 41/50
+2025-06-06 21:27:39 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 42/50
+2025-06-06 21:27:44 INFO     Test_epoch 42, Horizon 6: Val MAE 1.70778, Val MAPE 3.14%
+2025-06-06 21:27:44 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 43/50
+2025-06-06 21:27:46 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 44/50
+2025-06-06 21:27:51 INFO     Test_epoch 44, Horizon 6: Val MAE 1.68849, Val MAPE 3.05%
+2025-06-06 21:27:51 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 45/50
+2025-06-06 21:27:52 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 46/50
+2025-06-06 21:27:58 INFO     Test_epoch 46, Horizon 6: Val MAE 1.70846, Val MAPE 3.05%
+2025-06-06 21:27:58 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 47/50
+2025-06-06 21:27:59 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 48/50
+2025-06-06 21:28:04 INFO     Test_epoch 48, Horizon 6: Val MAE 1.70167, Val MAPE 3.08%
+2025-06-06 21:28:04 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 49/50
+2025-06-06 21:28:06 INFO     MetaEpoch: 1, Target City: pems-bay, TestEpoch: 50/50
+2025-06-06 21:28:11 INFO     Test_epoch 50, Horizon 6: Val MAE 1.71355, Val MAPE 3.15%
+2025-06-06 21:28:11 INFO     ========== Meta Epoch 2/5 ==========
+2025-06-06 21:28:11 INFO     MetaEpoch: 2, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:28:42 INFO     MetaEpoch: 2, City: metr-la, Horizon: 6, Val MAE: 2.76836, Val MAPE: 6.23%
+2025-06-06 21:28:42 INFO     MetaEpoch: 2, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:29:18 INFO     MetaEpoch: 2, City: chengdu, Horizon: 6, Val MAE: 2.49682, Val MAPE: 11.59%
+2025-06-06 21:29:18 INFO     MetaEpoch: 2, City: shenzhen, CityEpoch: 1/1
+2025-06-06 21:30:03 INFO     MetaEpoch: 2, City: shenzhen, Horizon: 6, Val MAE: 2.13657, Val MAPE: 8.82%
+2025-06-06 21:30:03 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 1/50
+2025-06-06 21:30:04 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 2/50
+2025-06-06 21:30:10 INFO     Test_epoch 2, Horizon 6: Val MAE 1.76441, Val MAPE 3.18%
+2025-06-06 21:30:10 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 3/50
+2025-06-06 21:30:11 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 4/50
+2025-06-06 21:30:16 INFO     Test_epoch 4, Horizon 6: Val MAE 1.65489, Val MAPE 3.01%
+2025-06-06 21:30:16 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 5/50
+2025-06-06 21:30:18 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 6/50
+2025-06-06 21:30:23 INFO     Test_epoch 6, Horizon 6: Val MAE 1.64792, Val MAPE 2.98%
+2025-06-06 21:30:23 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 7/50
+2025-06-06 21:30:24 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 8/50
+2025-06-06 21:30:30 INFO     Test_epoch 8, Horizon 6: Val MAE 1.67481, Val MAPE 3.13%
+2025-06-06 21:30:30 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 9/50
+2025-06-06 21:30:31 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 10/50
+2025-06-06 21:30:36 INFO     Test_epoch 10, Horizon 6: Val MAE 1.70209, Val MAPE 3.04%
+2025-06-06 21:30:36 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 11/50
+2025-06-06 21:30:38 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 12/50
+2025-06-06 21:30:43 INFO     Test_epoch 12, Horizon 6: Val MAE 1.63771, Val MAPE 2.97%
+2025-06-06 21:30:43 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 13/50
+2025-06-06 21:30:44 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 14/50
+2025-06-06 21:30:49 INFO     Test_epoch 14, Horizon 6: Val MAE 1.65490, Val MAPE 2.97%
+2025-06-06 21:30:49 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 15/50
+2025-06-06 21:30:51 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 16/50
+2025-06-06 21:30:56 INFO     Test_epoch 16, Horizon 6: Val MAE 1.67998, Val MAPE 3.05%
+2025-06-06 21:30:56 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 17/50
+2025-06-06 21:30:57 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 18/50
+2025-06-06 21:31:02 INFO     Test_epoch 18, Horizon 6: Val MAE 1.66966, Val MAPE 2.98%
+2025-06-06 21:31:02 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 19/50
+2025-06-06 21:31:04 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 20/50
+2025-06-06 21:31:09 INFO     Test_epoch 20, Horizon 6: Val MAE 1.68339, Val MAPE 3.09%
+2025-06-06 21:31:09 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 21/50
+2025-06-06 21:31:10 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 22/50
+2025-06-06 21:31:15 INFO     Test_epoch 22, Horizon 6: Val MAE 1.67657, Val MAPE 3.01%
+2025-06-06 21:31:15 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 23/50
+2025-06-06 21:31:16 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 24/50
+2025-06-06 21:31:21 INFO     Test_epoch 24, Horizon 6: Val MAE 1.71121, Val MAPE 3.04%
+2025-06-06 21:31:21 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 25/50
+2025-06-06 21:31:22 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 26/50
+2025-06-06 21:31:27 INFO     Test_epoch 26, Horizon 6: Val MAE 1.67972, Val MAPE 3.09%
+2025-06-06 21:31:27 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 27/50
+2025-06-06 21:31:29 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 28/50
+2025-06-06 21:31:34 INFO     Test_epoch 28, Horizon 6: Val MAE 1.66237, Val MAPE 3.01%
+2025-06-06 21:31:34 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 29/50
+2025-06-06 21:31:35 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 30/50
+2025-06-06 21:31:40 INFO     Test_epoch 30, Horizon 6: Val MAE 1.71440, Val MAPE 3.07%
+2025-06-06 21:31:40 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 31/50
+2025-06-06 21:31:41 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 32/50
+2025-06-06 21:31:46 INFO     Test_epoch 32, Horizon 6: Val MAE 1.71234, Val MAPE 3.05%
+2025-06-06 21:31:46 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 33/50
+2025-06-06 21:31:48 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 34/50
+2025-06-06 21:31:53 INFO     Test_epoch 34, Horizon 6: Val MAE 1.70862, Val MAPE 3.16%
+2025-06-06 21:31:53 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 35/50
+2025-06-06 21:31:54 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 36/50
+2025-06-06 21:31:59 INFO     Test_epoch 36, Horizon 6: Val MAE 1.66779, Val MAPE 3.02%
+2025-06-06 21:31:59 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 37/50
+2025-06-06 21:32:01 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 38/50
+2025-06-06 21:32:06 INFO     Test_epoch 38, Horizon 6: Val MAE 1.71456, Val MAPE 3.13%
+2025-06-06 21:32:06 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 39/50
+2025-06-06 21:32:07 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 40/50
+2025-06-06 21:32:12 INFO     Test_epoch 40, Horizon 6: Val MAE 1.70157, Val MAPE 3.06%
+2025-06-06 21:32:12 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 41/50
+2025-06-06 21:32:14 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 42/50
+2025-06-06 21:32:19 INFO     Test_epoch 42, Horizon 6: Val MAE 1.69580, Val MAPE 3.11%
+2025-06-06 21:32:19 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 43/50
+2025-06-06 21:32:20 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 44/50
+2025-06-06 21:32:25 INFO     Test_epoch 44, Horizon 6: Val MAE 1.72734, Val MAPE 3.10%
+2025-06-06 21:32:25 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 45/50
+2025-06-06 21:32:26 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 46/50
+2025-06-06 21:32:31 INFO     Test_epoch 46, Horizon 6: Val MAE 1.76311, Val MAPE 3.18%
+2025-06-06 21:32:31 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 47/50
+2025-06-06 21:32:33 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 48/50
+2025-06-06 21:32:38 INFO     Test_epoch 48, Horizon 6: Val MAE 1.73959, Val MAPE 3.20%
+2025-06-06 21:32:38 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 49/50
+2025-06-06 21:32:39 INFO     MetaEpoch: 2, Target City: pems-bay, TestEpoch: 50/50
+2025-06-06 21:32:44 INFO     Test_epoch 50, Horizon 6: Val MAE 1.72329, Val MAPE 3.16%
+2025-06-06 21:32:44 INFO     ========== Meta Epoch 3/5 ==========
+2025-06-06 21:32:44 INFO     MetaEpoch: 3, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:33:11 INFO     MetaEpoch: 3, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:33:45 INFO     MetaEpoch: 3, City: shenzhen, CityEpoch: 1/1
+2025-06-06 21:34:27 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 1/50
+2025-06-06 21:34:29 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 2/50
+2025-06-06 21:34:34 INFO     Test_epoch 2, Horizon 6: Val MAE 1.77450, Val MAPE 3.27%
+2025-06-06 21:34:34 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 3/50
+2025-06-06 21:34:35 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 4/50
+2025-06-06 21:34:40 INFO     Test_epoch 4, Horizon 6: Val MAE 1.69185, Val MAPE 3.03%
+2025-06-06 21:34:40 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 5/50
+2025-06-06 21:34:41 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 6/50
+2025-06-06 21:34:47 INFO     Test_epoch 6, Horizon 6: Val MAE 1.63762, Val MAPE 2.97%
+2025-06-06 21:34:47 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 7/50
+2025-06-06 21:34:48 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 8/50
+2025-06-06 21:34:53 INFO     Test_epoch 8, Horizon 6: Val MAE 1.69363, Val MAPE 3.04%
+2025-06-06 21:34:53 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 9/50
+2025-06-06 21:34:55 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 10/50
+2025-06-06 21:35:00 INFO     Test_epoch 10, Horizon 6: Val MAE 1.61923, Val MAPE 2.95%
+2025-06-06 21:35:00 INFO     Saving best checkpoint to out/improved_main/pems-bay-s42_best.pth
+2025-06-06 21:35:00 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 11/50
+2025-06-06 21:35:02 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 12/50
+2025-06-06 21:35:07 INFO     Test_epoch 12, Horizon 6: Val MAE 1.70470, Val MAPE 3.04%
+2025-06-06 21:35:07 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 13/50
+2025-06-06 21:35:08 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 14/50
+2025-06-06 21:35:14 INFO     Test_epoch 14, Horizon 6: Val MAE 1.68515, Val MAPE 3.04%
+2025-06-06 21:35:14 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 15/50
+2025-06-06 21:35:15 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 16/50
+2025-06-06 21:35:20 INFO     Test_epoch 16, Horizon 6: Val MAE 1.71016, Val MAPE 3.07%
+2025-06-06 21:35:20 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 17/50
+2025-06-06 21:35:21 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 18/50
+2025-06-06 21:35:26 INFO     Test_epoch 18, Horizon 6: Val MAE 1.77430, Val MAPE 3.14%
+2025-06-06 21:35:26 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 19/50
+2025-06-06 21:35:28 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 20/50
+2025-06-06 21:35:33 INFO     Test_epoch 20, Horizon 6: Val MAE 1.69265, Val MAPE 3.10%
+2025-06-06 21:35:33 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 21/50
+2025-06-06 21:35:34 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 22/50
+2025-06-06 21:35:39 INFO     Test_epoch 22, Horizon 6: Val MAE 1.68632, Val MAPE 3.03%
+2025-06-06 21:35:39 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 23/50
+2025-06-06 21:35:41 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 24/50
+2025-06-06 21:35:46 INFO     Test_epoch 24, Horizon 6: Val MAE 1.70402, Val MAPE 3.05%
+2025-06-06 21:35:46 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 25/50
+2025-06-06 21:35:47 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 26/50
+2025-06-06 21:35:52 INFO     Test_epoch 26, Horizon 6: Val MAE 1.69953, Val MAPE 3.09%
+2025-06-06 21:35:52 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 27/50
+2025-06-06 21:35:54 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 28/50
+2025-06-06 21:35:59 INFO     Test_epoch 28, Horizon 6: Val MAE 1.69038, Val MAPE 3.06%
+2025-06-06 21:35:59 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 29/50
+2025-06-06 21:36:00 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 30/50
+2025-06-06 21:36:05 INFO     Test_epoch 30, Horizon 6: Val MAE 1.66931, Val MAPE 3.03%
+2025-06-06 21:36:05 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 31/50
+2025-06-06 21:36:07 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 32/50
+2025-06-06 21:36:12 INFO     Test_epoch 32, Horizon 6: Val MAE 1.71336, Val MAPE 3.11%
+2025-06-06 21:36:12 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 33/50
+2025-06-06 21:36:13 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 34/50
+2025-06-06 21:36:18 INFO     Test_epoch 34, Horizon 6: Val MAE 1.69837, Val MAPE 3.14%
+2025-06-06 21:36:18 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 35/50
+2025-06-06 21:36:20 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 36/50
+2025-06-06 21:36:25 INFO     Test_epoch 36, Horizon 6: Val MAE 1.67910, Val MAPE 3.05%
+2025-06-06 21:36:25 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 37/50
+2025-06-06 21:36:26 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 38/50
+2025-06-06 21:36:31 INFO     Test_epoch 38, Horizon 6: Val MAE 1.73448, Val MAPE 3.13%
+2025-06-06 21:36:31 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 39/50
+2025-06-06 21:36:32 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 40/50
+2025-06-06 21:36:38 INFO     Test_epoch 40, Horizon 6: Val MAE 1.70926, Val MAPE 3.13%
+2025-06-06 21:36:38 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 41/50
+2025-06-06 21:36:39 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 42/50
+2025-06-06 21:36:44 INFO     Test_epoch 42, Horizon 6: Val MAE 1.74786, Val MAPE 3.17%
+2025-06-06 21:36:44 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 43/50
+2025-06-06 21:36:45 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 44/50
+2025-06-06 21:36:51 INFO     Test_epoch 44, Horizon 6: Val MAE 1.74000, Val MAPE 3.15%
+2025-06-06 21:36:51 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 45/50
+2025-06-06 21:36:52 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 46/50
+2025-06-06 21:36:57 INFO     Test_epoch 46, Horizon 6: Val MAE 1.71060, Val MAPE 3.13%
+2025-06-06 21:36:57 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 47/50
+2025-06-06 21:36:58 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 48/50
+2025-06-06 21:37:03 INFO     Test_epoch 48, Horizon 6: Val MAE 1.73504, Val MAPE 3.14%
+2025-06-06 21:37:03 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 49/50
+2025-06-06 21:37:05 INFO     MetaEpoch: 3, Target City: pems-bay, TestEpoch: 50/50
+2025-06-06 21:37:10 INFO     Test_epoch 50, Horizon 6: Val MAE 1.77582, Val MAPE 3.19%
+2025-06-06 21:37:10 INFO     ========== Meta Epoch 4/5 ==========
+2025-06-06 21:37:10 INFO     MetaEpoch: 4, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:37:39 INFO     MetaEpoch: 4, City: metr-la, Horizon: 6, Val MAE: 2.76595, Val MAPE: 6.15%
+2025-06-06 21:37:39 INFO     MetaEpoch: 4, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:38:15 INFO     MetaEpoch: 4, City: chengdu, Horizon: 6, Val MAE: 2.49263, Val MAPE: 11.52%
+2025-06-06 21:38:15 INFO     MetaEpoch: 4, City: shenzhen, CityEpoch: 1/1
+2025-06-06 21:38:58 INFO     MetaEpoch: 4, City: shenzhen, Horizon: 6, Val MAE: 2.15385, Val MAPE: 8.77%
+2025-06-06 21:38:58 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 1/50
+2025-06-06 21:39:00 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 2/50
+2025-06-06 21:39:05 INFO     Test_epoch 2, Horizon 6: Val MAE 1.75303, Val MAPE 3.11%
+2025-06-06 21:39:05 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 3/50
+2025-06-06 21:39:06 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 4/50
+2025-06-06 21:39:11 INFO     Test_epoch 4, Horizon 6: Val MAE 1.67513, Val MAPE 3.08%
+2025-06-06 21:39:11 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 5/50
+2025-06-06 21:39:13 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 6/50
+2025-06-06 21:39:18 INFO     Test_epoch 6, Horizon 6: Val MAE 1.65654, Val MAPE 2.97%
+2025-06-06 21:39:18 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 7/50
+2025-06-06 21:39:19 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 8/50
+2025-06-06 21:39:24 INFO     Test_epoch 8, Horizon 6: Val MAE 1.63726, Val MAPE 2.95%
+2025-06-06 21:39:24 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 9/50
+2025-06-06 21:39:25 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 10/50
+2025-06-06 21:39:31 INFO     Test_epoch 10, Horizon 6: Val MAE 1.63802, Val MAPE 2.98%
+2025-06-06 21:39:31 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 11/50
+2025-06-06 21:39:32 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 12/50
+2025-06-06 21:39:37 INFO     Test_epoch 12, Horizon 6: Val MAE 1.62095, Val MAPE 2.98%
+2025-06-06 21:39:37 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 13/50
+2025-06-06 21:39:38 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 14/50
+2025-06-06 21:39:43 INFO     Test_epoch 14, Horizon 6: Val MAE 1.64268, Val MAPE 2.96%
+2025-06-06 21:39:43 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 15/50
+2025-06-06 21:39:44 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 16/50
+2025-06-06 21:39:49 INFO     Test_epoch 16, Horizon 6: Val MAE 1.66666, Val MAPE 3.00%
+2025-06-06 21:39:49 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 17/50
+2025-06-06 21:39:51 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 18/50
+2025-06-06 21:39:56 INFO     Test_epoch 18, Horizon 6: Val MAE 1.72652, Val MAPE 3.09%
+2025-06-06 21:39:56 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 19/50
+2025-06-06 21:39:57 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 20/50
+2025-06-06 21:40:02 INFO     Test_epoch 20, Horizon 6: Val MAE 1.64504, Val MAPE 2.99%
+2025-06-06 21:40:02 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 21/50
+2025-06-06 21:40:04 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 22/50
+2025-06-06 21:40:09 INFO     Test_epoch 22, Horizon 6: Val MAE 1.66584, Val MAPE 3.00%
+2025-06-06 21:40:09 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 23/50
+2025-06-06 21:40:10 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 24/50
+2025-06-06 21:40:15 INFO     Test_epoch 24, Horizon 6: Val MAE 1.70863, Val MAPE 3.08%
+2025-06-06 21:40:15 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 25/50
+2025-06-06 21:40:16 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 26/50
+2025-06-06 21:40:22 INFO     Test_epoch 26, Horizon 6: Val MAE 1.68970, Val MAPE 3.06%
+2025-06-06 21:40:22 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 27/50
+2025-06-06 21:40:23 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 28/50
+2025-06-06 21:40:28 INFO     Test_epoch 28, Horizon 6: Val MAE 1.71934, Val MAPE 3.09%
+2025-06-06 21:40:28 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 29/50
+2025-06-06 21:40:29 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 30/50
+2025-06-06 21:40:35 INFO     Test_epoch 30, Horizon 6: Val MAE 1.70555, Val MAPE 3.07%
+2025-06-06 21:40:35 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 31/50
+2025-06-06 21:40:36 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 32/50
+2025-06-06 21:40:41 INFO     Test_epoch 32, Horizon 6: Val MAE 1.75562, Val MAPE 3.14%
+2025-06-06 21:40:41 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 33/50
+2025-06-06 21:40:42 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 34/50
+2025-06-06 21:40:48 INFO     Test_epoch 34, Horizon 6: Val MAE 1.67253, Val MAPE 3.02%
+2025-06-06 21:40:48 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 35/50
+2025-06-06 21:40:49 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 36/50
+2025-06-06 21:40:54 INFO     Test_epoch 36, Horizon 6: Val MAE 1.71389, Val MAPE 3.10%
+2025-06-06 21:40:54 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 37/50
+2025-06-06 21:40:55 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 38/50
+2025-06-06 21:41:01 INFO     Test_epoch 38, Horizon 6: Val MAE 1.80281, Val MAPE 3.24%
+2025-06-06 21:41:01 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 39/50
+2025-06-06 21:41:02 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 40/50
+2025-06-06 21:41:07 INFO     Test_epoch 40, Horizon 6: Val MAE 1.75982, Val MAPE 3.22%
+2025-06-06 21:41:07 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 41/50
+2025-06-06 21:41:09 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 42/50
+2025-06-06 21:41:14 INFO     Test_epoch 42, Horizon 6: Val MAE 1.71611, Val MAPE 3.07%
+2025-06-06 21:41:14 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 43/50
+2025-06-06 21:41:15 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 44/50
+2025-06-06 21:41:20 INFO     Test_epoch 44, Horizon 6: Val MAE 1.73763, Val MAPE 3.20%
+2025-06-06 21:41:20 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 45/50
+2025-06-06 21:41:22 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 46/50
+2025-06-06 21:41:27 INFO     Test_epoch 46, Horizon 6: Val MAE 1.75583, Val MAPE 3.19%
+2025-06-06 21:41:27 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 47/50
+2025-06-06 21:41:28 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 48/50
+2025-06-06 21:41:33 INFO     Test_epoch 48, Horizon 6: Val MAE 1.73158, Val MAPE 3.15%
+2025-06-06 21:41:33 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 49/50
+2025-06-06 21:41:34 INFO     MetaEpoch: 4, Target City: pems-bay, TestEpoch: 50/50
+2025-06-06 21:41:39 INFO     Test_epoch 50, Horizon 6: Val MAE 1.72980, Val MAPE 3.17%
+2025-06-06 21:41:39 INFO     ========== Meta Epoch 5/5 ==========
+2025-06-06 21:41:39 INFO     MetaEpoch: 5, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:42:07 INFO     MetaEpoch: 5, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:42:40 INFO     MetaEpoch: 5, City: shenzhen, CityEpoch: 1/1
+2025-06-06 21:43:22 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 1/50
+2025-06-06 21:43:23 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 2/50
+2025-06-06 21:43:28 INFO     Test_epoch 2, Horizon 6: Val MAE 1.75688, Val MAPE 3.26%
+2025-06-06 21:43:28 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 3/50
+2025-06-06 21:43:29 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 4/50
+2025-06-06 21:43:34 INFO     Test_epoch 4, Horizon 6: Val MAE 1.68963, Val MAPE 3.08%
+2025-06-06 21:43:34 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 5/50
+2025-06-06 21:43:36 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 6/50
+2025-06-06 21:43:41 INFO     Test_epoch 6, Horizon 6: Val MAE 1.64379, Val MAPE 2.96%
+2025-06-06 21:43:41 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 7/50
+2025-06-06 21:43:42 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 8/50
+2025-06-06 21:43:47 INFO     Test_epoch 8, Horizon 6: Val MAE 1.66580, Val MAPE 2.97%
+2025-06-06 21:43:47 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 9/50
+2025-06-06 21:43:48 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 10/50
+2025-06-06 21:43:53 INFO     Test_epoch 10, Horizon 6: Val MAE 1.61848, Val MAPE 2.94%
+2025-06-06 21:43:53 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 11/50
+2025-06-06 21:43:55 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 12/50
+2025-06-06 21:44:00 INFO     Test_epoch 12, Horizon 6: Val MAE 1.70210, Val MAPE 3.06%
+2025-06-06 21:44:00 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 13/50
+2025-06-06 21:44:01 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 14/50
+2025-06-06 21:44:06 INFO     Test_epoch 14, Horizon 6: Val MAE 1.64177, Val MAPE 2.95%
+2025-06-06 21:44:06 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 15/50
+2025-06-06 21:44:08 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 16/50
+2025-06-06 21:44:13 INFO     Test_epoch 16, Horizon 6: Val MAE 1.64965, Val MAPE 3.00%
+2025-06-06 21:44:13 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 17/50
+2025-06-06 21:44:14 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 18/50
+2025-06-06 21:44:19 INFO     Test_epoch 18, Horizon 6: Val MAE 1.69788, Val MAPE 3.04%
+2025-06-06 21:44:19 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 19/50
+2025-06-06 21:44:20 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 20/50
+2025-06-06 21:44:26 INFO     Test_epoch 20, Horizon 6: Val MAE 1.83194, Val MAPE 3.26%
+2025-06-06 21:44:26 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 21/50
+2025-06-06 21:44:27 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 22/50
+2025-06-06 21:44:32 INFO     Test_epoch 22, Horizon 6: Val MAE 1.67055, Val MAPE 3.05%
+2025-06-06 21:44:32 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 23/50
+2025-06-06 21:44:33 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 24/50
+2025-06-06 21:44:38 INFO     Test_epoch 24, Horizon 6: Val MAE 1.71807, Val MAPE 3.13%
+2025-06-06 21:44:38 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 25/50
+2025-06-06 21:44:40 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 26/50
+2025-06-06 21:44:45 INFO     Test_epoch 26, Horizon 6: Val MAE 1.67437, Val MAPE 3.03%
+2025-06-06 21:44:45 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 27/50
+2025-06-06 21:44:46 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 28/50
+2025-06-06 21:44:51 INFO     Test_epoch 28, Horizon 6: Val MAE 1.71094, Val MAPE 3.09%
+2025-06-06 21:44:51 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 29/50
+2025-06-06 21:44:53 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 30/50
+2025-06-06 21:44:58 INFO     Test_epoch 30, Horizon 6: Val MAE 1.76787, Val MAPE 3.15%
+2025-06-06 21:44:58 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 31/50
+2025-06-06 21:44:59 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 32/50
+2025-06-06 21:45:04 INFO     Test_epoch 32, Horizon 6: Val MAE 1.79182, Val MAPE 3.31%
+2025-06-06 21:45:04 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 33/50
+2025-06-06 21:45:05 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 34/50
+2025-06-06 21:45:11 INFO     Test_epoch 34, Horizon 6: Val MAE 1.72287, Val MAPE 3.18%
+2025-06-06 21:45:11 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 35/50
+2025-06-06 21:45:12 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 36/50
+2025-06-06 21:45:17 INFO     Test_epoch 36, Horizon 6: Val MAE 1.76413, Val MAPE 3.17%
+2025-06-06 21:45:17 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 37/50
+2025-06-06 21:45:18 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 38/50
+2025-06-06 21:45:24 INFO     Test_epoch 38, Horizon 6: Val MAE 1.72420, Val MAPE 3.09%
+2025-06-06 21:45:24 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 39/50
+2025-06-06 21:45:25 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 40/50
+2025-06-06 21:45:30 INFO     Test_epoch 40, Horizon 6: Val MAE 1.69464, Val MAPE 3.09%
+2025-06-06 21:45:30 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 41/50
+2025-06-06 21:45:31 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 42/50
+2025-06-06 21:45:37 INFO     Test_epoch 42, Horizon 6: Val MAE 1.77900, Val MAPE 3.20%
+2025-06-06 21:45:37 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 43/50
+2025-06-06 21:45:38 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 44/50
+2025-06-06 21:45:43 INFO     Test_epoch 44, Horizon 6: Val MAE 1.76299, Val MAPE 3.22%
+2025-06-06 21:45:43 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 45/50
+2025-06-06 21:45:44 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 46/50
+2025-06-06 21:45:50 INFO     Test_epoch 46, Horizon 6: Val MAE 1.74920, Val MAPE 3.17%
+2025-06-06 21:45:50 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 47/50
+2025-06-06 21:45:51 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 48/50
+2025-06-06 21:45:56 INFO     Test_epoch 48, Horizon 6: Val MAE 1.74996, Val MAPE 3.20%
+2025-06-06 21:45:56 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 49/50
+2025-06-06 21:45:57 INFO     MetaEpoch: 5, Target City: pems-bay, TestEpoch: 50/50
+2025-06-06 21:46:02 INFO     Test_epoch 50, Horizon 6: Val MAE 1.75066, Val MAPE 3.20%
+2025-06-06 21:46:03 INFO     ========== Final Evaluation ==========
+2025-06-06 21:46:03 INFO     Loaded best model for final evaluation
+2025-06-06 21:46:06 INFO     ========== Validation Results (基于原始尺度) ==========
+2025-06-06 21:46:06 INFO     Horizon 6: MAE=1.619, MAPE=2.948%, MSE=10.289, RMSE=3.208
+2025-06-06 21:46:06 INFO     ========== Test Results with Statistical Significance (基于原始尺度) ==========
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2285: RuntimeWarning: invalid value encountered in multiply
+  lower_bound = _a * scale + loc
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2286: RuntimeWarning: invalid value encountered in multiply
+  upper_bound = _b * scale + loc
+2025-06-06 21:46:44 INFO     Horizon 6:
+2025-06-06 21:46:44 INFO       MAE: 1.551 ± 0.000
+2025-06-06 21:46:44 INFO       MAPE: 2.811 ± 0.000
+2025-06-06 21:46:44 INFO       MSE: 9.158 ± 0.000
+2025-06-06 21:46:44 INFO       RMSE: 3.026 ± 0.000
+2025-06-06 21:46:44 INFO     Training completed successfully!
+2025-06-06 21:46:44 INFO     🎯 所有评估指标都基于反归一化后的原始数据尺度
+Horizon 6 MAE: 1.551 ± 0.000 (95% CI: [nan, nan])
+Horizon 6 MSE: 9.158 ± 0.000 (95% CI: [nan, nan])
+Horizon 6 RMSE: 3.026 ± 0.000 (95% CI: [nan, nan])
+Horizon 6 MAPE: 2.811 ± 0.000 (95% CI: [nan, nan])

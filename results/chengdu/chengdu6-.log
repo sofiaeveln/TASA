@@ -1,0 +1,447 @@
+nohup: 忽略输入
+2025-06-07 10:37:57 INFO     Configuration loaded:
+2025-06-07 10:37:57 INFO     {'data': {'datapath': '/root/ggg/DATA/data', 'train_cities': ['metr-la', 'pems-bay', 'shenzhen'], 'target_city': 'chengdu', 'seq_len': 12, 'horizons': [6], 'steps_per_day': 144, 'adaptation_days': 3}, 'model': {'n_layer': 6, 'n_head': 4, 'n_embd': 64, 'dropout': 0.1, 'bias': False, 'n_linear': 1, 'input_dim': 2, 'tod_embedding_dim': 10, 'dow_embedding_dim': 4, 'spatial_embedding_dim': 8, 'adaptive_embedding_dim': 8, 'output_dim': 1, 'temporal_layers': 2, 'spatial_layers': 2, 'blocksize': 8, 'blocknum': 4, 'factors': 1}, 'optimization': {'meta_lr': 5e-05, 'update_lr': 0.001, 'meta_epochs': 5, 'city_epochs': 1, 'test_epochs': 50, 'batch_size': 32, 'grad_clip': 1.0, 'weight_decay': 0, 'use_lora': True, 'lora_rank': 32, 'use_flash_attn': False, 'gradient_checkpointing': False, 'mixed_precision': True, 'dtype': 'float32'}, 'training': {'seed': 42, 'cuda': '0', 'eval_interval': 2, 'eval_only': False, 'enable_significance_test': True, 'num_test_runs': 5, 'domain_specific_params': ['value_mlp', 'value_transform']}, 'output': {'out_dir': 'out/improved_main', 'log_dir': 'logs', 'save_best': True, 'save_last': True}}
+2025-06-07 10:37:57 INFO     使用input_dim=2，只使用交通数据特征
+2025-06-07 10:37:57 INFO     自动生成时间特征: TOD=10, DOW=4
+2025-06-07 10:38:30 INFO     Using limited data for target city chengdu: 3 days for adaptation
+2025-06-07 10:38:46 INFO     Maximum blocknum across cities: 79
+2025-06-07 10:38:46 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-07 10:38:46 INFO     Model initialized with 0.30M parameters
+2025-06-07 10:38:47 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-07 10:38:47 INFO     Model initialized with 0.26M parameters
+2025-06-07 10:38:48 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-07 10:38:48 INFO     Model initialized with 0.27M parameters
+2025-06-07 10:38:48 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-07 10:38:48 INFO     Model initialized with 0.30M parameters
+2025-06-07 10:38:48 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-07 10:38:48 INFO     Model initialized with 0.29M parameters
+2025-06-07 10:38:48 INFO     ========== Meta Epoch 1/5 ==========
+2025-06-07 10:38:48 INFO     MetaEpoch: 1, City: metr-la, CityEpoch: 1/1
+2025-06-07 10:39:25 INFO     MetaEpoch: 1, City: pems-bay, CityEpoch: 1/1
+2025-06-07 10:40:51 INFO     MetaEpoch: 1, City: shenzhen, CityEpoch: 1/1
+2025-06-07 10:41:49 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 1/50
+2025-06-07 10:41:52 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 2/50
+2025-06-07 10:41:58 INFO     Test_epoch 2, Horizon 6: Val MAE 2.99478, Val MAPE 13.26%
+2025-06-07 10:41:58 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:41:58 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 3/50
+2025-06-07 10:42:01 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 4/50
+2025-06-07 10:42:06 INFO     Test_epoch 4, Horizon 6: Val MAE 3.00767, Val MAPE 12.86%
+2025-06-07 10:42:06 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 5/50
+2025-06-07 10:42:10 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 6/50
+2025-06-07 10:42:15 INFO     Test_epoch 6, Horizon 6: Val MAE 2.65293, Val MAPE 11.92%
+2025-06-07 10:42:15 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:42:15 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 7/50
+2025-06-07 10:42:18 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 8/50
+2025-06-07 10:42:23 INFO     Test_epoch 8, Horizon 6: Val MAE 2.60293, Val MAPE 11.58%
+2025-06-07 10:42:23 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:42:23 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 9/50
+2025-06-07 10:42:26 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 10/50
+2025-06-07 10:42:32 INFO     Test_epoch 10, Horizon 6: Val MAE 2.57566, Val MAPE 11.61%
+2025-06-07 10:42:32 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:42:32 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 11/50
+2025-06-07 10:42:35 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 12/50
+2025-06-07 10:42:40 INFO     Test_epoch 12, Horizon 6: Val MAE 2.60648, Val MAPE 11.48%
+2025-06-07 10:42:40 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 13/50
+2025-06-07 10:42:43 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 14/50
+2025-06-07 10:42:49 INFO     Test_epoch 14, Horizon 6: Val MAE 2.62600, Val MAPE 12.08%
+2025-06-07 10:42:49 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 15/50
+2025-06-07 10:42:52 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 16/50
+2025-06-07 10:42:57 INFO     Test_epoch 16, Horizon 6: Val MAE 2.58839, Val MAPE 11.80%
+2025-06-07 10:42:57 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 17/50
+2025-06-07 10:43:00 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 18/50
+2025-06-07 10:43:05 INFO     Test_epoch 18, Horizon 6: Val MAE 2.59636, Val MAPE 11.75%
+2025-06-07 10:43:05 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 19/50
+2025-06-07 10:43:08 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 20/50
+2025-06-07 10:43:14 INFO     Test_epoch 20, Horizon 6: Val MAE 2.61139, Val MAPE 11.31%
+2025-06-07 10:43:14 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 21/50
+2025-06-07 10:43:17 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 22/50
+2025-06-07 10:43:22 INFO     Test_epoch 22, Horizon 6: Val MAE 2.55465, Val MAPE 11.51%
+2025-06-07 10:43:22 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:43:22 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 23/50
+2025-06-07 10:43:25 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 24/50
+2025-06-07 10:43:31 INFO     Test_epoch 24, Horizon 6: Val MAE 2.55605, Val MAPE 11.66%
+2025-06-07 10:43:31 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 25/50
+2025-06-07 10:43:34 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 26/50
+2025-06-07 10:43:39 INFO     Test_epoch 26, Horizon 6: Val MAE 2.53232, Val MAPE 11.09%
+2025-06-07 10:43:39 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:43:39 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 27/50
+2025-06-07 10:43:42 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 28/50
+2025-06-07 10:43:48 INFO     Test_epoch 28, Horizon 6: Val MAE 2.54499, Val MAPE 11.23%
+2025-06-07 10:43:48 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 29/50
+2025-06-07 10:43:51 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 30/50
+2025-06-07 10:43:56 INFO     Test_epoch 30, Horizon 6: Val MAE 2.54050, Val MAPE 11.39%
+2025-06-07 10:43:56 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 31/50
+2025-06-07 10:43:59 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 32/50
+2025-06-07 10:44:04 INFO     Test_epoch 32, Horizon 6: Val MAE 2.53772, Val MAPE 11.72%
+2025-06-07 10:44:04 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 33/50
+2025-06-07 10:44:07 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 34/50
+2025-06-07 10:44:13 INFO     Test_epoch 34, Horizon 6: Val MAE 2.51801, Val MAPE 11.13%
+2025-06-07 10:44:13 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 35/50
+2025-06-07 10:44:16 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 36/50
+2025-06-07 10:44:21 INFO     Test_epoch 36, Horizon 6: Val MAE 2.52400, Val MAPE 11.44%
+2025-06-07 10:44:21 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 37/50
+2025-06-07 10:44:24 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 38/50
+2025-06-07 10:44:30 INFO     Test_epoch 38, Horizon 6: Val MAE 2.51153, Val MAPE 11.26%
+2025-06-07 10:44:30 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 39/50
+2025-06-07 10:44:33 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 40/50
+2025-06-07 10:44:38 INFO     Test_epoch 40, Horizon 6: Val MAE 2.53209, Val MAPE 11.36%
+2025-06-07 10:44:38 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 41/50
+2025-06-07 10:44:41 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 42/50
+2025-06-07 10:44:46 INFO     Test_epoch 42, Horizon 6: Val MAE 2.50657, Val MAPE 11.02%
+2025-06-07 10:44:46 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 43/50
+2025-06-07 10:44:49 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 44/50
+2025-06-07 10:44:55 INFO     Test_epoch 44, Horizon 6: Val MAE 2.50775, Val MAPE 11.23%
+2025-06-07 10:44:55 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 45/50
+2025-06-07 10:44:58 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 46/50
+2025-06-07 10:45:03 INFO     Test_epoch 46, Horizon 6: Val MAE 2.49176, Val MAPE 11.24%
+2025-06-07 10:45:03 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 47/50
+2025-06-07 10:45:06 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 48/50
+2025-06-07 10:45:11 INFO     Test_epoch 48, Horizon 6: Val MAE 2.51260, Val MAPE 11.18%
+2025-06-07 10:45:11 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 49/50
+2025-06-07 10:45:14 INFO     MetaEpoch: 1, Target City: chengdu, TestEpoch: 50/50
+2025-06-07 10:45:20 INFO     Test_epoch 50, Horizon 6: Val MAE 2.49731, Val MAPE 11.17%
+2025-06-07 10:45:20 INFO     ========== Meta Epoch 2/5 ==========
+2025-06-07 10:45:20 INFO     MetaEpoch: 2, City: metr-la, CityEpoch: 1/1
+2025-06-07 10:45:59 INFO     MetaEpoch: 2, City: metr-la, Horizon: 6, Val MAE: 2.74303, Val MAPE: 6.17%
+2025-06-07 10:45:59 INFO     MetaEpoch: 2, City: pems-bay, CityEpoch: 1/1
+2025-06-07 10:47:29 INFO     MetaEpoch: 2, City: pems-bay, Horizon: 6, Val MAE: 1.46136, Val MAPE: 2.63%
+2025-06-07 10:47:29 INFO     MetaEpoch: 2, City: shenzhen, CityEpoch: 1/1
+2025-06-07 10:48:29 INFO     MetaEpoch: 2, City: shenzhen, Horizon: 6, Val MAE: 2.15804, Val MAPE: 8.91%
+2025-06-07 10:48:29 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 1/50
+2025-06-07 10:48:32 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 2/50
+2025-06-07 10:48:38 INFO     Test_epoch 2, Horizon 6: Val MAE 3.09139, Val MAPE 14.60%
+2025-06-07 10:48:38 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 3/50
+2025-06-07 10:48:41 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 4/50
+2025-06-07 10:48:46 INFO     Test_epoch 4, Horizon 6: Val MAE 2.68236, Val MAPE 11.93%
+2025-06-07 10:48:46 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 5/50
+2025-06-07 10:48:49 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 6/50
+2025-06-07 10:48:55 INFO     Test_epoch 6, Horizon 6: Val MAE 2.58407, Val MAPE 11.36%
+2025-06-07 10:48:55 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 7/50
+2025-06-07 10:48:58 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 8/50
+2025-06-07 10:49:03 INFO     Test_epoch 8, Horizon 6: Val MAE 2.62178, Val MAPE 11.77%
+2025-06-07 10:49:03 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 9/50
+2025-06-07 10:49:06 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 10/50
+2025-06-07 10:49:11 INFO     Test_epoch 10, Horizon 6: Val MAE 2.52232, Val MAPE 11.21%
+2025-06-07 10:49:11 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 11/50
+2025-06-07 10:49:14 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 12/50
+2025-06-07 10:49:20 INFO     Test_epoch 12, Horizon 6: Val MAE 2.51026, Val MAPE 11.29%
+2025-06-07 10:49:20 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 13/50
+2025-06-07 10:49:23 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 14/50
+2025-06-07 10:49:28 INFO     Test_epoch 14, Horizon 6: Val MAE 2.51203, Val MAPE 11.11%
+2025-06-07 10:49:28 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:49:28 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 15/50
+2025-06-07 10:49:31 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 16/50
+2025-06-07 10:49:37 INFO     Test_epoch 16, Horizon 6: Val MAE 2.52367, Val MAPE 11.41%
+2025-06-07 10:49:37 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 17/50
+2025-06-07 10:49:40 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 18/50
+2025-06-07 10:49:45 INFO     Test_epoch 18, Horizon 6: Val MAE 2.50526, Val MAPE 11.41%
+2025-06-07 10:49:45 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 19/50
+2025-06-07 10:49:48 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 20/50
+2025-06-07 10:49:53 INFO     Test_epoch 20, Horizon 6: Val MAE 2.50729, Val MAPE 11.51%
+2025-06-07 10:49:53 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 21/50
+2025-06-07 10:49:56 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 22/50
+2025-06-07 10:50:02 INFO     Test_epoch 22, Horizon 6: Val MAE 2.48169, Val MAPE 11.00%
+2025-06-07 10:50:02 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:50:02 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 23/50
+2025-06-07 10:50:05 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 24/50
+2025-06-07 10:50:10 INFO     Test_epoch 24, Horizon 6: Val MAE 2.49978, Val MAPE 11.38%
+2025-06-07 10:50:10 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 25/50
+2025-06-07 10:50:13 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 26/50
+2025-06-07 10:50:18 INFO     Test_epoch 26, Horizon 6: Val MAE 2.48931, Val MAPE 11.10%
+2025-06-07 10:50:18 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 27/50
+2025-06-07 10:50:21 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 28/50
+2025-06-07 10:50:27 INFO     Test_epoch 28, Horizon 6: Val MAE 2.50516, Val MAPE 11.45%
+2025-06-07 10:50:27 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 29/50
+2025-06-07 10:50:30 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 30/50
+2025-06-07 10:50:35 INFO     Test_epoch 30, Horizon 6: Val MAE 2.50824, Val MAPE 11.33%
+2025-06-07 10:50:35 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 31/50
+2025-06-07 10:50:38 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 32/50
+2025-06-07 10:50:43 INFO     Test_epoch 32, Horizon 6: Val MAE 2.48237, Val MAPE 10.93%
+2025-06-07 10:50:43 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 33/50
+2025-06-07 10:50:47 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 34/50
+2025-06-07 10:50:52 INFO     Test_epoch 34, Horizon 6: Val MAE 2.48301, Val MAPE 11.12%
+2025-06-07 10:50:52 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 35/50
+2025-06-07 10:50:55 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 36/50
+2025-06-07 10:51:00 INFO     Test_epoch 36, Horizon 6: Val MAE 2.47407, Val MAPE 10.99%
+2025-06-07 10:51:00 INFO     Saving best checkpoint to out/improved_main/chengdu-s42_best.pth
+2025-06-07 10:51:00 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 37/50
+2025-06-07 10:51:03 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 38/50
+2025-06-07 10:51:08 INFO     Test_epoch 38, Horizon 6: Val MAE 2.51035, Val MAPE 11.17%
+2025-06-07 10:51:08 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 39/50
+2025-06-07 10:51:12 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 40/50
+2025-06-07 10:51:17 INFO     Test_epoch 40, Horizon 6: Val MAE 2.49004, Val MAPE 10.99%
+2025-06-07 10:51:17 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 41/50
+2025-06-07 10:51:20 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 42/50
+2025-06-07 10:51:25 INFO     Test_epoch 42, Horizon 6: Val MAE 2.49009, Val MAPE 11.03%
+2025-06-07 10:51:25 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 43/50
+2025-06-07 10:51:28 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 44/50
+2025-06-07 10:51:34 INFO     Test_epoch 44, Horizon 6: Val MAE 2.50524, Val MAPE 11.24%
+2025-06-07 10:51:34 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 45/50
+2025-06-07 10:51:37 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 46/50
+2025-06-07 10:51:42 INFO     Test_epoch 46, Horizon 6: Val MAE 2.49255, Val MAPE 11.16%
+2025-06-07 10:51:42 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 47/50
+2025-06-07 10:51:45 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 48/50
+2025-06-07 10:51:50 INFO     Test_epoch 48, Horizon 6: Val MAE 2.52839, Val MAPE 11.51%
+2025-06-07 10:51:50 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 49/50
+2025-06-07 10:51:53 INFO     MetaEpoch: 2, Target City: chengdu, TestEpoch: 50/50
+2025-06-07 10:51:59 INFO     Test_epoch 50, Horizon 6: Val MAE 2.48795, Val MAPE 11.06%
+2025-06-07 10:51:59 INFO     ========== Meta Epoch 3/5 ==========
+2025-06-07 10:51:59 INFO     MetaEpoch: 3, City: metr-la, CityEpoch: 1/1
+2025-06-07 10:52:36 INFO     MetaEpoch: 3, City: pems-bay, CityEpoch: 1/1
+2025-06-07 10:54:01 INFO     MetaEpoch: 3, City: shenzhen, CityEpoch: 1/1
+2025-06-07 10:54:59 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 1/50
+2025-06-07 10:55:02 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 2/50
+2025-06-07 10:55:07 INFO     Test_epoch 2, Horizon 6: Val MAE 2.82266, Val MAPE 12.73%
+2025-06-07 10:55:07 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 3/50
+2025-06-07 10:55:11 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 4/50
+2025-06-07 10:55:16 INFO     Test_epoch 4, Horizon 6: Val MAE 2.73802, Val MAPE 11.89%
+2025-06-07 10:55:16 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 5/50
+2025-06-07 10:55:19 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 6/50
+2025-06-07 10:55:24 INFO     Test_epoch 6, Horizon 6: Val MAE 2.57286, Val MAPE 11.63%
+2025-06-07 10:55:24 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 7/50
+2025-06-07 10:55:27 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 8/50
+2025-06-07 10:55:32 INFO     Test_epoch 8, Horizon 6: Val MAE 2.64728, Val MAPE 11.43%
+2025-06-07 10:55:32 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 9/50
+2025-06-07 10:55:36 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 10/50
+2025-06-07 10:55:41 INFO     Test_epoch 10, Horizon 6: Val MAE 2.52839, Val MAPE 11.41%
+2025-06-07 10:55:41 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 11/50
+2025-06-07 10:55:44 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 12/50
+2025-06-07 10:55:49 INFO     Test_epoch 12, Horizon 6: Val MAE 2.57333, Val MAPE 11.23%
+2025-06-07 10:55:49 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 13/50
+2025-06-07 10:55:52 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 14/50
+2025-06-07 10:55:58 INFO     Test_epoch 14, Horizon 6: Val MAE 2.50775, Val MAPE 11.21%
+2025-06-07 10:55:58 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 15/50
+2025-06-07 10:56:01 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 16/50
+2025-06-07 10:56:06 INFO     Test_epoch 16, Horizon 6: Val MAE 2.55330, Val MAPE 11.17%
+2025-06-07 10:56:06 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 17/50
+2025-06-07 10:56:09 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 18/50
+2025-06-07 10:56:14 INFO     Test_epoch 18, Horizon 6: Val MAE 2.56383, Val MAPE 11.55%
+2025-06-07 10:56:14 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 19/50
+2025-06-07 10:56:17 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 20/50
+2025-06-07 10:56:23 INFO     Test_epoch 20, Horizon 6: Val MAE 2.49698, Val MAPE 11.32%
+2025-06-07 10:56:23 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 21/50
+2025-06-07 10:56:26 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 22/50
+2025-06-07 10:56:31 INFO     Test_epoch 22, Horizon 6: Val MAE 2.49944, Val MAPE 11.40%
+2025-06-07 10:56:31 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 23/50
+2025-06-07 10:56:34 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 24/50
+2025-06-07 10:56:39 INFO     Test_epoch 24, Horizon 6: Val MAE 2.52547, Val MAPE 11.00%
+2025-06-07 10:56:39 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 25/50
+2025-06-07 10:56:42 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 26/50
+2025-06-07 10:56:48 INFO     Test_epoch 26, Horizon 6: Val MAE 2.48377, Val MAPE 11.14%
+2025-06-07 10:56:48 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 27/50
+2025-06-07 10:56:51 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 28/50
+2025-06-07 10:56:56 INFO     Test_epoch 28, Horizon 6: Val MAE 2.47161, Val MAPE 11.18%
+2025-06-07 10:56:56 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 29/50
+2025-06-07 10:56:59 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 30/50
+2025-06-07 10:57:05 INFO     Test_epoch 30, Horizon 6: Val MAE 2.48785, Val MAPE 11.17%
+2025-06-07 10:57:05 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 31/50
+2025-06-07 10:57:08 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 32/50
+2025-06-07 10:57:13 INFO     Test_epoch 32, Horizon 6: Val MAE 2.48216, Val MAPE 11.03%
+2025-06-07 10:57:13 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 33/50
+2025-06-07 10:57:16 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 34/50
+2025-06-07 10:57:21 INFO     Test_epoch 34, Horizon 6: Val MAE 2.47508, Val MAPE 10.85%
+2025-06-07 10:57:21 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 35/50
+2025-06-07 10:57:24 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 36/50
+2025-06-07 10:57:30 INFO     Test_epoch 36, Horizon 6: Val MAE 2.52049, Val MAPE 11.67%
+2025-06-07 10:57:30 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 37/50
+2025-06-07 10:57:33 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 38/50
+2025-06-07 10:57:38 INFO     Test_epoch 38, Horizon 6: Val MAE 2.49506, Val MAPE 11.24%
+2025-06-07 10:57:38 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 39/50
+2025-06-07 10:57:41 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 40/50
+2025-06-07 10:57:46 INFO     Test_epoch 40, Horizon 6: Val MAE 2.49793, Val MAPE 11.03%
+2025-06-07 10:57:46 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 41/50
+2025-06-07 10:57:49 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 42/50
+2025-06-07 10:57:55 INFO     Test_epoch 42, Horizon 6: Val MAE 2.48019, Val MAPE 11.10%
+2025-06-07 10:57:55 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 43/50
+2025-06-07 10:57:58 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 44/50
+2025-06-07 10:58:03 INFO     Test_epoch 44, Horizon 6: Val MAE 2.51535, Val MAPE 11.67%
+2025-06-07 10:58:03 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 45/50
+2025-06-07 10:58:06 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 46/50
+2025-06-07 10:58:12 INFO     Test_epoch 46, Horizon 6: Val MAE 2.49675, Val MAPE 11.37%
+2025-06-07 10:58:12 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 47/50
+2025-06-07 10:58:15 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 48/50
+2025-06-07 10:58:20 INFO     Test_epoch 48, Horizon 6: Val MAE 2.50947, Val MAPE 11.39%
+2025-06-07 10:58:20 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 49/50
+2025-06-07 10:58:23 INFO     MetaEpoch: 3, Target City: chengdu, TestEpoch: 50/50
+2025-06-07 10:58:28 INFO     Test_epoch 50, Horizon 6: Val MAE 2.49129, Val MAPE 11.17%
+2025-06-07 10:58:28 INFO     ========== Meta Epoch 4/5 ==========
+2025-06-07 10:58:28 INFO     MetaEpoch: 4, City: metr-la, CityEpoch: 1/1
+2025-06-07 10:59:07 INFO     MetaEpoch: 4, City: metr-la, Horizon: 6, Val MAE: 2.74459, Val MAPE: 6.19%
+2025-06-07 10:59:07 INFO     MetaEpoch: 4, City: pems-bay, CityEpoch: 1/1
+2025-06-07 11:00:36 INFO     MetaEpoch: 4, City: pems-bay, Horizon: 6, Val MAE: 1.46369, Val MAPE: 2.65%
+2025-06-07 11:00:36 INFO     MetaEpoch: 4, City: shenzhen, CityEpoch: 1/1
+2025-06-07 11:01:36 INFO     MetaEpoch: 4, City: shenzhen, Horizon: 6, Val MAE: 2.14890, Val MAPE: 8.81%
+2025-06-07 11:01:36 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 1/50
+2025-06-07 11:01:40 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 2/50
+2025-06-07 11:01:45 INFO     Test_epoch 2, Horizon 6: Val MAE 2.84358, Val MAPE 12.58%
+2025-06-07 11:01:45 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 3/50
+2025-06-07 11:01:48 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 4/50
+2025-06-07 11:01:53 INFO     Test_epoch 4, Horizon 6: Val MAE 2.73734, Val MAPE 11.72%
+2025-06-07 11:01:53 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 5/50
+2025-06-07 11:01:57 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 6/50
+2025-06-07 11:02:02 INFO     Test_epoch 6, Horizon 6: Val MAE 2.57237, Val MAPE 11.41%
+2025-06-07 11:02:02 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 7/50
+2025-06-07 11:02:05 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 8/50
+2025-06-07 11:02:10 INFO     Test_epoch 8, Horizon 6: Val MAE 2.61103, Val MAPE 11.30%
+2025-06-07 11:02:10 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 9/50
+2025-06-07 11:02:13 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 10/50
+2025-06-07 11:02:19 INFO     Test_epoch 10, Horizon 6: Val MAE 2.61476, Val MAPE 11.71%
+2025-06-07 11:02:19 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 11/50
+2025-06-07 11:02:22 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 12/50
+2025-06-07 11:02:27 INFO     Test_epoch 12, Horizon 6: Val MAE 2.52198, Val MAPE 11.37%
+2025-06-07 11:02:27 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 13/50
+2025-06-07 11:02:30 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 14/50
+2025-06-07 11:02:35 INFO     Test_epoch 14, Horizon 6: Val MAE 2.48638, Val MAPE 11.16%
+2025-06-07 11:02:35 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 15/50
+2025-06-07 11:02:38 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 16/50
+2025-06-07 11:02:44 INFO     Test_epoch 16, Horizon 6: Val MAE 2.53742, Val MAPE 11.55%
+2025-06-07 11:02:44 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 17/50
+2025-06-07 11:02:47 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 18/50
+2025-06-07 11:02:52 INFO     Test_epoch 18, Horizon 6: Val MAE 2.51760, Val MAPE 11.48%
+2025-06-07 11:02:52 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 19/50
+2025-06-07 11:02:55 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 20/50
+2025-06-07 11:03:00 INFO     Test_epoch 20, Horizon 6: Val MAE 2.52357, Val MAPE 11.43%
+2025-06-07 11:03:00 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 21/50
+2025-06-07 11:03:03 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 22/50
+2025-06-07 11:03:09 INFO     Test_epoch 22, Horizon 6: Val MAE 2.50017, Val MAPE 11.49%
+2025-06-07 11:03:09 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 23/50
+2025-06-07 11:03:12 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 24/50
+2025-06-07 11:03:17 INFO     Test_epoch 24, Horizon 6: Val MAE 2.50396, Val MAPE 11.47%
+2025-06-07 11:03:17 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 25/50
+2025-06-07 11:03:20 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 26/50
+2025-06-07 11:03:25 INFO     Test_epoch 26, Horizon 6: Val MAE 2.46685, Val MAPE 11.11%
+2025-06-07 11:03:25 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 27/50
+2025-06-07 11:03:28 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 28/50
+2025-06-07 11:03:34 INFO     Test_epoch 28, Horizon 6: Val MAE 2.48270, Val MAPE 11.25%
+2025-06-07 11:03:34 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 29/50
+2025-06-07 11:03:37 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 30/50
+2025-06-07 11:03:42 INFO     Test_epoch 30, Horizon 6: Val MAE 2.47347, Val MAPE 11.13%
+2025-06-07 11:03:42 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 31/50
+2025-06-07 11:03:45 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 32/50
+2025-06-07 11:03:50 INFO     Test_epoch 32, Horizon 6: Val MAE 2.48884, Val MAPE 10.99%
+2025-06-07 11:03:50 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 33/50
+2025-06-07 11:03:53 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 34/50
+2025-06-07 11:03:59 INFO     Test_epoch 34, Horizon 6: Val MAE 2.52961, Val MAPE 11.47%
+2025-06-07 11:03:59 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 35/50
+2025-06-07 11:04:02 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 36/50
+2025-06-07 11:04:07 INFO     Test_epoch 36, Horizon 6: Val MAE 2.49558, Val MAPE 11.28%
+2025-06-07 11:04:07 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 37/50
+2025-06-07 11:04:10 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 38/50
+2025-06-07 11:04:15 INFO     Test_epoch 38, Horizon 6: Val MAE 2.49073, Val MAPE 11.21%
+2025-06-07 11:04:15 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 39/50
+2025-06-07 11:04:19 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 40/50
+2025-06-07 11:04:24 INFO     Test_epoch 40, Horizon 6: Val MAE 2.45738, Val MAPE 10.98%
+2025-06-07 11:04:24 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 41/50
+2025-06-07 11:04:27 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 42/50
+2025-06-07 11:04:32 INFO     Test_epoch 42, Horizon 6: Val MAE 2.50532, Val MAPE 11.33%
+2025-06-07 11:04:32 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 43/50
+2025-06-07 11:04:35 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 44/50
+2025-06-07 11:04:41 INFO     Test_epoch 44, Horizon 6: Val MAE 2.50077, Val MAPE 11.15%
+2025-06-07 11:04:41 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 45/50
+2025-06-07 11:04:44 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 46/50
+2025-06-07 11:04:49 INFO     Test_epoch 46, Horizon 6: Val MAE 2.48065, Val MAPE 11.12%
+2025-06-07 11:04:49 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 47/50
+2025-06-07 11:04:52 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 48/50
+2025-06-07 11:04:57 INFO     Test_epoch 48, Horizon 6: Val MAE 2.50841, Val MAPE 11.31%
+2025-06-07 11:04:57 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 49/50
+2025-06-07 11:05:00 INFO     MetaEpoch: 4, Target City: chengdu, TestEpoch: 50/50
+2025-06-07 11:05:06 INFO     Test_epoch 50, Horizon 6: Val MAE 2.49989, Val MAPE 11.35%
+2025-06-07 11:05:06 INFO     ========== Meta Epoch 5/5 ==========
+2025-06-07 11:05:06 INFO     MetaEpoch: 5, City: metr-la, CityEpoch: 1/1
+2025-06-07 11:05:42 INFO     MetaEpoch: 5, City: pems-bay, CityEpoch: 1/1
+2025-06-07 11:07:07 INFO     MetaEpoch: 5, City: shenzhen, CityEpoch: 1/1
+2025-06-07 11:08:04 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 1/50
+2025-06-07 11:08:08 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 2/50
+2025-06-07 11:08:13 INFO     Test_epoch 2, Horizon 6: Val MAE 2.88147, Val MAPE 13.23%
+2025-06-07 11:08:13 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 3/50
+2025-06-07 11:08:16 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 4/50
+2025-06-07 11:08:22 INFO     Test_epoch 4, Horizon 6: Val MAE 2.83388, Val MAPE 12.02%
+2025-06-07 11:08:22 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 5/50
+2025-06-07 11:08:25 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 6/50
+2025-06-07 11:08:30 INFO     Test_epoch 6, Horizon 6: Val MAE 2.60989, Val MAPE 11.42%
+2025-06-07 11:08:30 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 7/50
+2025-06-07 11:08:33 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 8/50
+2025-06-07 11:08:39 INFO     Test_epoch 8, Horizon 6: Val MAE 2.62106, Val MAPE 11.36%
+2025-06-07 11:08:39 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 9/50
+2025-06-07 11:08:42 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 10/50
+2025-06-07 11:08:47 INFO     Test_epoch 10, Horizon 6: Val MAE 2.57203, Val MAPE 11.67%
+2025-06-07 11:08:47 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 11/50
+2025-06-07 11:08:50 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 12/50
+2025-06-07 11:08:55 INFO     Test_epoch 12, Horizon 6: Val MAE 2.53184, Val MAPE 11.09%
+2025-06-07 11:08:55 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 13/50
+2025-06-07 11:08:58 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 14/50
+2025-06-07 11:09:04 INFO     Test_epoch 14, Horizon 6: Val MAE 2.50249, Val MAPE 11.32%
+2025-06-07 11:09:04 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 15/50
+2025-06-07 11:09:07 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 16/50
+2025-06-07 11:09:12 INFO     Test_epoch 16, Horizon 6: Val MAE 2.49288, Val MAPE 11.50%
+2025-06-07 11:09:12 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 17/50
+2025-06-07 11:09:15 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 18/50
+2025-06-07 11:09:21 INFO     Test_epoch 18, Horizon 6: Val MAE 2.51862, Val MAPE 11.51%
+2025-06-07 11:09:21 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 19/50
+2025-06-07 11:09:24 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 20/50
+2025-06-07 11:09:29 INFO     Test_epoch 20, Horizon 6: Val MAE 2.49509, Val MAPE 11.24%
+2025-06-07 11:09:29 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 21/50
+2025-06-07 11:09:32 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 22/50
+2025-06-07 11:09:37 INFO     Test_epoch 22, Horizon 6: Val MAE 2.52705, Val MAPE 11.04%
+2025-06-07 11:09:37 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 23/50
+2025-06-07 11:09:40 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 24/50
+2025-06-07 11:09:46 INFO     Test_epoch 24, Horizon 6: Val MAE 2.50200, Val MAPE 11.16%
+2025-06-07 11:09:46 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 25/50
+2025-06-07 11:09:49 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 26/50
+2025-06-07 11:09:54 INFO     Test_epoch 26, Horizon 6: Val MAE 2.55183, Val MAPE 11.93%
+2025-06-07 11:09:54 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 27/50
+2025-06-07 11:09:57 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 28/50
+2025-06-07 11:10:03 INFO     Test_epoch 28, Horizon 6: Val MAE 2.53383, Val MAPE 11.16%
+2025-06-07 11:10:03 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 29/50
+2025-06-07 11:10:06 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 30/50
+2025-06-07 11:10:11 INFO     Test_epoch 30, Horizon 6: Val MAE 2.49474, Val MAPE 11.19%
+2025-06-07 11:10:11 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 31/50
+2025-06-07 11:10:14 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 32/50
+2025-06-07 11:10:19 INFO     Test_epoch 32, Horizon 6: Val MAE 2.51285, Val MAPE 11.55%
+2025-06-07 11:10:19 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 33/50
+2025-06-07 11:10:23 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 34/50
+2025-06-07 11:10:28 INFO     Test_epoch 34, Horizon 6: Val MAE 2.51348, Val MAPE 11.27%
+2025-06-07 11:10:28 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 35/50
+2025-06-07 11:10:31 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 36/50
+2025-06-07 11:10:36 INFO     Test_epoch 36, Horizon 6: Val MAE 2.48909, Val MAPE 11.05%
+2025-06-07 11:10:36 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 37/50
+2025-06-07 11:10:39 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 38/50
+2025-06-07 11:10:45 INFO     Test_epoch 38, Horizon 6: Val MAE 2.48107, Val MAPE 11.03%
+2025-06-07 11:10:45 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 39/50
+2025-06-07 11:10:48 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 40/50
+2025-06-07 11:10:53 INFO     Test_epoch 40, Horizon 6: Val MAE 2.47234, Val MAPE 11.08%
+2025-06-07 11:10:53 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 41/50
+2025-06-07 11:10:56 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 42/50
+2025-06-07 11:11:02 INFO     Test_epoch 42, Horizon 6: Val MAE 2.52070, Val MAPE 11.19%
+2025-06-07 11:11:02 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 43/50
+2025-06-07 11:11:05 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 44/50
+2025-06-07 11:11:10 INFO     Test_epoch 44, Horizon 6: Val MAE 2.47823, Val MAPE 11.17%
+2025-06-07 11:11:10 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 45/50
+2025-06-07 11:11:13 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 46/50
+2025-06-07 11:11:18 INFO     Test_epoch 46, Horizon 6: Val MAE 2.48467, Val MAPE 11.12%
+2025-06-07 11:11:18 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 47/50
+2025-06-07 11:11:21 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 48/50
+2025-06-07 11:11:27 INFO     Test_epoch 48, Horizon 6: Val MAE 2.50822, Val MAPE 11.33%
+2025-06-07 11:11:27 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 49/50
+2025-06-07 11:11:30 INFO     MetaEpoch: 5, Target City: chengdu, TestEpoch: 50/50
+2025-06-07 11:11:35 INFO     Test_epoch 50, Horizon 6: Val MAE 2.51436, Val MAPE 11.61%
+2025-06-07 11:11:35 INFO     ========== Final Evaluation ==========
+2025-06-07 11:11:35 INFO     Loaded best model for final evaluation
+2025-06-07 11:11:37 INFO     ========== Validation Results (基于原始尺度) ==========
+2025-06-07 11:11:37 INFO     Horizon 6: MAE=2.474, MAPE=10.992%, MSE=13.488, RMSE=3.673
+2025-06-07 11:11:37 INFO     ========== Test Results with Statistical Significance (基于原始尺度) ==========
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2285: RuntimeWarning: invalid value encountered in multiply
+  lower_bound = _a * scale + loc
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2286: RuntimeWarning: invalid value encountered in multiply
+  upper_bound = _b * scale + loc
+2025-06-07 11:12:01 INFO     Horizon 6:
+2025-06-07 11:12:01 INFO       MAE: 2.467 ± 0.000
+2025-06-07 11:12:01 INFO       MAPE: 11.351 ± 0.000
+2025-06-07 11:12:01 INFO       MSE: 13.609 ± 0.000
+2025-06-07 11:12:01 INFO       RMSE: 3.689 ± 0.000
+2025-06-07 11:12:01 INFO     Training completed successfully!
+2025-06-07 11:12:01 INFO     🎯 所有评估指标都基于反归一化后的原始数据尺度
+Horizon 6 MAE: 2.467 ± 0.000 (95% CI: [nan, nan])
+Horizon 6 MSE: 13.609 ± 0.000 (95% CI: [13.609, 13.609])
+Horizon 6 RMSE: 3.689 ± 0.000 (95% CI: [nan, nan])
+Horizon 6 MAPE: 11.351 ± 0.000 (95% CI: [nan, nan])

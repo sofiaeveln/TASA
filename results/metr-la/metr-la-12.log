@@ -1,0 +1,442 @@
+nohup: 忽略输入
+2025-06-06 21:55:19 INFO     Configuration loaded:
+2025-06-06 21:55:19 INFO     {'data': {'datapath': '/root/ggg/DATA/data', 'train_cities': ['chengdu', 'pems-bay', 'shenzhen'], 'target_city': 'metr-la', 'seq_len': 12, 'horizons': [12], 'steps_per_day': 288, 'adaptation_days': 3}, 'model': {'n_layer': 6, 'n_head': 4, 'n_embd': 64, 'dropout': 0.1, 'bias': False, 'n_linear': 1, 'input_dim': 2, 'tod_embedding_dim': 8, 'dow_embedding_dim': 4, 'spatial_embedding_dim': 8, 'adaptive_embedding_dim': 8, 'output_dim': 1, 'temporal_layers': 2, 'spatial_layers': 2, 'blocksize': 8, 'blocknum': 4, 'factors': 1}, 'optimization': {'meta_lr': 5e-05, 'update_lr': 0.001, 'meta_epochs': 5, 'city_epochs': 1, 'test_epochs': 50, 'batch_size': 32, 'grad_clip': 1.0, 'weight_decay': 0.001, 'use_lora': True, 'lora_rank': 32, 'use_flash_attn': False, 'gradient_checkpointing': False, 'mixed_precision': True, 'dtype': 'float32'}, 'training': {'seed': 42, 'cuda': '2', 'eval_interval': 2, 'eval_only': False, 'enable_significance_test': True, 'num_test_runs': 5, 'domain_specific_params': ['value_mlp', 'value_transform']}, 'output': {'out_dir': 'out/improved_main', 'log_dir': 'logs', 'save_best': True, 'save_last': True}}
+2025-06-06 21:55:19 INFO     使用input_dim=2，只使用交通数据特征
+2025-06-06 21:55:19 INFO     自动生成时间特征: TOD=8, DOW=4
+2025-06-06 21:56:00 INFO     Using limited data for target city metr-la: 3 days for adaptation
+2025-06-06 21:56:56 INFO     Maximum blocknum across cities: 79
+2025-06-06 21:56:56 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:56:56 INFO     Model initialized with 0.30M parameters
+2025-06-06 21:56:56 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:56:56 INFO     Model initialized with 0.29M parameters
+2025-06-06 21:56:58 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:56:58 INFO     Model initialized with 0.27M parameters
+2025-06-06 21:56:58 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:56:58 INFO     Model initialized with 0.30M parameters
+2025-06-06 21:56:58 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:56:58 INFO     Model initialized with 0.26M parameters
+2025-06-06 21:56:58 INFO     ========== Meta Epoch 1/5 ==========
+2025-06-06 21:56:58 INFO     MetaEpoch: 1, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:57:45 INFO     MetaEpoch: 1, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:59:12 INFO     MetaEpoch: 1, City: shenzhen, CityEpoch: 1/1
+2025-06-06 22:00:10 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 1/50
+2025-06-06 22:00:11 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 2/50
+2025-06-06 22:00:15 INFO     Test_epoch 2, Horizon 12: Val MAE 3.62427, Val MAPE 8.69%
+2025-06-06 22:00:15 INFO     Saving best checkpoint to out/improved_main/metr-la-s42_best.pth
+2025-06-06 22:00:15 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 3/50
+2025-06-06 22:00:16 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 4/50
+2025-06-06 22:00:19 INFO     Test_epoch 4, Horizon 12: Val MAE 3.52848, Val MAPE 8.58%
+2025-06-06 22:00:19 INFO     Saving best checkpoint to out/improved_main/metr-la-s42_best.pth
+2025-06-06 22:00:19 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 5/50
+2025-06-06 22:00:20 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 6/50
+2025-06-06 22:00:24 INFO     Test_epoch 6, Horizon 12: Val MAE 3.46205, Val MAPE 8.52%
+2025-06-06 22:00:24 INFO     Saving best checkpoint to out/improved_main/metr-la-s42_best.pth
+2025-06-06 22:00:24 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 7/50
+2025-06-06 22:00:25 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 8/50
+2025-06-06 22:00:28 INFO     Test_epoch 8, Horizon 12: Val MAE 3.43780, Val MAPE 8.23%
+2025-06-06 22:00:28 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 9/50
+2025-06-06 22:00:30 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 10/50
+2025-06-06 22:00:33 INFO     Test_epoch 10, Horizon 12: Val MAE 3.42404, Val MAPE 8.37%
+2025-06-06 22:00:33 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 11/50
+2025-06-06 22:00:34 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 12/50
+2025-06-06 22:00:37 INFO     Test_epoch 12, Horizon 12: Val MAE 3.42927, Val MAPE 8.10%
+2025-06-06 22:00:37 INFO     Saving best checkpoint to out/improved_main/metr-la-s42_best.pth
+2025-06-06 22:00:37 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 13/50
+2025-06-06 22:00:39 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 14/50
+2025-06-06 22:00:42 INFO     Test_epoch 14, Horizon 12: Val MAE 3.49544, Val MAPE 8.45%
+2025-06-06 22:00:42 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 15/50
+2025-06-06 22:00:43 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 16/50
+2025-06-06 22:00:46 INFO     Test_epoch 16, Horizon 12: Val MAE 3.49170, Val MAPE 8.36%
+2025-06-06 22:00:46 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 17/50
+2025-06-06 22:00:48 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 18/50
+2025-06-06 22:00:51 INFO     Test_epoch 18, Horizon 12: Val MAE 3.59623, Val MAPE 8.10%
+2025-06-06 22:00:51 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 19/50
+2025-06-06 22:00:52 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 20/50
+2025-06-06 22:00:56 INFO     Test_epoch 20, Horizon 12: Val MAE 3.81367, Val MAPE 8.56%
+2025-06-06 22:00:56 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 21/50
+2025-06-06 22:00:57 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 22/50
+2025-06-06 22:01:00 INFO     Test_epoch 22, Horizon 12: Val MAE 3.62470, Val MAPE 8.35%
+2025-06-06 22:01:00 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 23/50
+2025-06-06 22:01:01 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 24/50
+2025-06-06 22:01:05 INFO     Test_epoch 24, Horizon 12: Val MAE 3.68477, Val MAPE 8.38%
+2025-06-06 22:01:05 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 25/50
+2025-06-06 22:01:06 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 26/50
+2025-06-06 22:01:09 INFO     Test_epoch 26, Horizon 12: Val MAE 3.86424, Val MAPE 9.10%
+2025-06-06 22:01:09 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 27/50
+2025-06-06 22:01:10 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 28/50
+2025-06-06 22:01:14 INFO     Test_epoch 28, Horizon 12: Val MAE 3.92205, Val MAPE 8.93%
+2025-06-06 22:01:14 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 29/50
+2025-06-06 22:01:15 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 30/50
+2025-06-06 22:01:18 INFO     Test_epoch 30, Horizon 12: Val MAE 3.98759, Val MAPE 9.02%
+2025-06-06 22:01:18 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 31/50
+2025-06-06 22:01:19 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 32/50
+2025-06-06 22:01:23 INFO     Test_epoch 32, Horizon 12: Val MAE 4.03823, Val MAPE 9.08%
+2025-06-06 22:01:23 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 33/50
+2025-06-06 22:01:24 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 34/50
+2025-06-06 22:01:27 INFO     Test_epoch 34, Horizon 12: Val MAE 3.97505, Val MAPE 8.83%
+2025-06-06 22:01:27 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 35/50
+2025-06-06 22:01:28 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 36/50
+2025-06-06 22:01:32 INFO     Test_epoch 36, Horizon 12: Val MAE 4.25300, Val MAPE 9.42%
+2025-06-06 22:01:32 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 37/50
+2025-06-06 22:01:33 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 38/50
+2025-06-06 22:01:36 INFO     Test_epoch 38, Horizon 12: Val MAE 4.13306, Val MAPE 9.16%
+2025-06-06 22:01:36 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 39/50
+2025-06-06 22:01:37 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 40/50
+2025-06-06 22:01:41 INFO     Test_epoch 40, Horizon 12: Val MAE 4.13916, Val MAPE 9.59%
+2025-06-06 22:01:41 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 41/50
+2025-06-06 22:01:42 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 42/50
+2025-06-06 22:01:45 INFO     Test_epoch 42, Horizon 12: Val MAE 4.58719, Val MAPE 9.87%
+2025-06-06 22:01:45 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 43/50
+2025-06-06 22:01:46 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 44/50
+2025-06-06 22:01:50 INFO     Test_epoch 44, Horizon 12: Val MAE 4.23451, Val MAPE 9.54%
+2025-06-06 22:01:50 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 45/50
+2025-06-06 22:01:51 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 46/50
+2025-06-06 22:01:54 INFO     Test_epoch 46, Horizon 12: Val MAE 4.30158, Val MAPE 9.64%
+2025-06-06 22:01:54 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 47/50
+2025-06-06 22:01:55 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 48/50
+2025-06-06 22:01:58 INFO     Test_epoch 48, Horizon 12: Val MAE 4.21986, Val MAPE 9.48%
+2025-06-06 22:01:58 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 49/50
+2025-06-06 22:02:00 INFO     MetaEpoch: 1, Target City: metr-la, TestEpoch: 50/50
+2025-06-06 22:02:03 INFO     Test_epoch 50, Horizon 12: Val MAE 4.64293, Val MAPE 10.31%
+2025-06-06 22:02:03 INFO     ========== Meta Epoch 2/5 ==========
+2025-06-06 22:02:03 INFO     MetaEpoch: 2, City: chengdu, CityEpoch: 1/1
+2025-06-06 22:02:52 INFO     MetaEpoch: 2, City: chengdu, Horizon: 12, Val MAE: 2.60071, Val MAPE: 11.67%
+2025-06-06 22:02:52 INFO     MetaEpoch: 2, City: pems-bay, CityEpoch: 1/1
+2025-06-06 22:04:24 INFO     MetaEpoch: 2, City: pems-bay, Horizon: 12, Val MAE: 1.71659, Val MAPE: 3.19%
+2025-06-06 22:04:24 INFO     MetaEpoch: 2, City: shenzhen, CityEpoch: 1/1
+2025-06-06 22:05:24 INFO     MetaEpoch: 2, City: shenzhen, Horizon: 12, Val MAE: 2.42623, Val MAPE: 10.24%
+2025-06-06 22:05:24 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 1/50
+2025-06-06 22:05:25 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 2/50
+2025-06-06 22:05:29 INFO     Test_epoch 2, Horizon 12: Val MAE 3.68703, Val MAPE 8.56%
+2025-06-06 22:05:29 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 3/50
+2025-06-06 22:05:30 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 4/50
+2025-06-06 22:05:33 INFO     Test_epoch 4, Horizon 12: Val MAE 3.62393, Val MAPE 9.32%
+2025-06-06 22:05:33 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 5/50
+2025-06-06 22:05:34 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 6/50
+2025-06-06 22:05:38 INFO     Test_epoch 6, Horizon 12: Val MAE 3.53283, Val MAPE 8.63%
+2025-06-06 22:05:38 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 7/50
+2025-06-06 22:05:39 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 8/50
+2025-06-06 22:05:42 INFO     Test_epoch 8, Horizon 12: Val MAE 3.45845, Val MAPE 8.33%
+2025-06-06 22:05:42 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 9/50
+2025-06-06 22:05:43 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 10/50
+2025-06-06 22:05:47 INFO     Test_epoch 10, Horizon 12: Val MAE 3.49162, Val MAPE 8.29%
+2025-06-06 22:05:47 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 11/50
+2025-06-06 22:05:48 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 12/50
+2025-06-06 22:05:51 INFO     Test_epoch 12, Horizon 12: Val MAE 3.52920, Val MAPE 8.35%
+2025-06-06 22:05:51 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 13/50
+2025-06-06 22:05:52 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 14/50
+2025-06-06 22:05:55 INFO     Test_epoch 14, Horizon 12: Val MAE 3.64176, Val MAPE 8.65%
+2025-06-06 22:05:55 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 15/50
+2025-06-06 22:05:57 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 16/50
+2025-06-06 22:06:00 INFO     Test_epoch 16, Horizon 12: Val MAE 3.58140, Val MAPE 8.09%
+2025-06-06 22:06:00 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 17/50
+2025-06-06 22:06:01 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 18/50
+2025-06-06 22:06:04 INFO     Test_epoch 18, Horizon 12: Val MAE 3.67149, Val MAPE 8.32%
+2025-06-06 22:06:04 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 19/50
+2025-06-06 22:06:06 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 20/50
+2025-06-06 22:06:09 INFO     Test_epoch 20, Horizon 12: Val MAE 3.68370, Val MAPE 8.49%
+2025-06-06 22:06:09 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 21/50
+2025-06-06 22:06:10 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 22/50
+2025-06-06 22:06:13 INFO     Test_epoch 22, Horizon 12: Val MAE 3.79499, Val MAPE 8.61%
+2025-06-06 22:06:13 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 23/50
+2025-06-06 22:06:15 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 24/50
+2025-06-06 22:06:18 INFO     Test_epoch 24, Horizon 12: Val MAE 4.10769, Val MAPE 9.22%
+2025-06-06 22:06:18 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 25/50
+2025-06-06 22:06:19 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 26/50
+2025-06-06 22:06:22 INFO     Test_epoch 26, Horizon 12: Val MAE 4.04951, Val MAPE 9.04%
+2025-06-06 22:06:22 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 27/50
+2025-06-06 22:06:23 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 28/50
+2025-06-06 22:06:26 INFO     Test_epoch 28, Horizon 12: Val MAE 3.90220, Val MAPE 8.80%
+2025-06-06 22:06:26 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 29/50
+2025-06-06 22:06:28 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 30/50
+2025-06-06 22:06:31 INFO     Test_epoch 30, Horizon 12: Val MAE 4.04232, Val MAPE 9.22%
+2025-06-06 22:06:31 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 31/50
+2025-06-06 22:06:32 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 32/50
+2025-06-06 22:06:35 INFO     Test_epoch 32, Horizon 12: Val MAE 4.21609, Val MAPE 9.13%
+2025-06-06 22:06:35 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 33/50
+2025-06-06 22:06:36 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 34/50
+2025-06-06 22:06:39 INFO     Test_epoch 34, Horizon 12: Val MAE 4.13808, Val MAPE 9.53%
+2025-06-06 22:06:39 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 35/50
+2025-06-06 22:06:41 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 36/50
+2025-06-06 22:06:44 INFO     Test_epoch 36, Horizon 12: Val MAE 4.19318, Val MAPE 9.21%
+2025-06-06 22:06:44 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 37/50
+2025-06-06 22:06:45 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 38/50
+2025-06-06 22:06:48 INFO     Test_epoch 38, Horizon 12: Val MAE 4.24636, Val MAPE 9.68%
+2025-06-06 22:06:48 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 39/50
+2025-06-06 22:06:49 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 40/50
+2025-06-06 22:06:52 INFO     Test_epoch 40, Horizon 12: Val MAE 4.19088, Val MAPE 9.33%
+2025-06-06 22:06:52 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 41/50
+2025-06-06 22:06:54 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 42/50
+2025-06-06 22:06:57 INFO     Test_epoch 42, Horizon 12: Val MAE 4.16057, Val MAPE 9.42%
+2025-06-06 22:06:57 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 43/50
+2025-06-06 22:06:58 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 44/50
+2025-06-06 22:07:01 INFO     Test_epoch 44, Horizon 12: Val MAE 4.33553, Val MAPE 9.84%
+2025-06-06 22:07:01 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 45/50
+2025-06-06 22:07:02 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 46/50
+2025-06-06 22:07:06 INFO     Test_epoch 46, Horizon 12: Val MAE 4.39734, Val MAPE 9.58%
+2025-06-06 22:07:06 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 47/50
+2025-06-06 22:07:07 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 48/50
+2025-06-06 22:07:10 INFO     Test_epoch 48, Horizon 12: Val MAE 4.25408, Val MAPE 9.67%
+2025-06-06 22:07:10 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 49/50
+2025-06-06 22:07:11 INFO     MetaEpoch: 2, Target City: metr-la, TestEpoch: 50/50
+2025-06-06 22:07:14 INFO     Test_epoch 50, Horizon 12: Val MAE 4.31579, Val MAPE 9.65%
+2025-06-06 22:07:14 INFO     ========== Meta Epoch 3/5 ==========
+2025-06-06 22:07:14 INFO     MetaEpoch: 3, City: chengdu, CityEpoch: 1/1
+2025-06-06 22:08:01 INFO     MetaEpoch: 3, City: pems-bay, CityEpoch: 1/1
+2025-06-06 22:09:29 INFO     MetaEpoch: 3, City: shenzhen, CityEpoch: 1/1
+2025-06-06 22:10:26 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 1/50
+2025-06-06 22:10:28 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 2/50
+2025-06-06 22:10:31 INFO     Test_epoch 2, Horizon 12: Val MAE 3.72180, Val MAPE 8.64%
+2025-06-06 22:10:31 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 3/50
+2025-06-06 22:10:32 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 4/50
+2025-06-06 22:10:35 INFO     Test_epoch 4, Horizon 12: Val MAE 3.79004, Val MAPE 9.45%
+2025-06-06 22:10:35 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 5/50
+2025-06-06 22:10:37 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 6/50
+2025-06-06 22:10:40 INFO     Test_epoch 6, Horizon 12: Val MAE 3.56673, Val MAPE 9.03%
+2025-06-06 22:10:40 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 7/50
+2025-06-06 22:10:41 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 8/50
+2025-06-06 22:10:44 INFO     Test_epoch 8, Horizon 12: Val MAE 3.51828, Val MAPE 8.68%
+2025-06-06 22:10:44 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 9/50
+2025-06-06 22:10:46 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 10/50
+2025-06-06 22:10:49 INFO     Test_epoch 10, Horizon 12: Val MAE 3.47670, Val MAPE 8.23%
+2025-06-06 22:10:49 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 11/50
+2025-06-06 22:10:50 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 12/50
+2025-06-06 22:10:53 INFO     Test_epoch 12, Horizon 12: Val MAE 3.51653, Val MAPE 8.18%
+2025-06-06 22:10:53 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 13/50
+2025-06-06 22:10:55 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 14/50
+2025-06-06 22:10:58 INFO     Test_epoch 14, Horizon 12: Val MAE 3.54430, Val MAPE 8.09%
+2025-06-06 22:10:58 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 15/50
+2025-06-06 22:10:59 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 16/50
+2025-06-06 22:11:02 INFO     Test_epoch 16, Horizon 12: Val MAE 3.63072, Val MAPE 8.28%
+2025-06-06 22:11:02 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 17/50
+2025-06-06 22:11:03 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 18/50
+2025-06-06 22:11:07 INFO     Test_epoch 18, Horizon 12: Val MAE 3.93315, Val MAPE 8.59%
+2025-06-06 22:11:07 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 19/50
+2025-06-06 22:11:08 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 20/50
+2025-06-06 22:11:11 INFO     Test_epoch 20, Horizon 12: Val MAE 3.88321, Val MAPE 8.75%
+2025-06-06 22:11:11 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 21/50
+2025-06-06 22:11:12 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 22/50
+2025-06-06 22:11:16 INFO     Test_epoch 22, Horizon 12: Val MAE 3.80890, Val MAPE 8.60%
+2025-06-06 22:11:16 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 23/50
+2025-06-06 22:11:17 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 24/50
+2025-06-06 22:11:20 INFO     Test_epoch 24, Horizon 12: Val MAE 4.10956, Val MAPE 9.38%
+2025-06-06 22:11:20 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 25/50
+2025-06-06 22:11:21 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 26/50
+2025-06-06 22:11:24 INFO     Test_epoch 26, Horizon 12: Val MAE 4.02906, Val MAPE 8.98%
+2025-06-06 22:11:24 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 27/50
+2025-06-06 22:11:26 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 28/50
+2025-06-06 22:11:29 INFO     Test_epoch 28, Horizon 12: Val MAE 4.14597, Val MAPE 9.61%
+2025-06-06 22:11:29 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 29/50
+2025-06-06 22:11:30 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 30/50
+2025-06-06 22:11:33 INFO     Test_epoch 30, Horizon 12: Val MAE 4.13874, Val MAPE 9.07%
+2025-06-06 22:11:33 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 31/50
+2025-06-06 22:11:34 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 32/50
+2025-06-06 22:11:38 INFO     Test_epoch 32, Horizon 12: Val MAE 4.27720, Val MAPE 9.70%
+2025-06-06 22:11:38 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 33/50
+2025-06-06 22:11:39 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 34/50
+2025-06-06 22:11:42 INFO     Test_epoch 34, Horizon 12: Val MAE 4.24299, Val MAPE 9.40%
+2025-06-06 22:11:42 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 35/50
+2025-06-06 22:11:43 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 36/50
+2025-06-06 22:11:47 INFO     Test_epoch 36, Horizon 12: Val MAE 4.24432, Val MAPE 9.61%
+2025-06-06 22:11:47 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 37/50
+2025-06-06 22:11:48 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 38/50
+2025-06-06 22:11:51 INFO     Test_epoch 38, Horizon 12: Val MAE 4.22745, Val MAPE 9.61%
+2025-06-06 22:11:51 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 39/50
+2025-06-06 22:11:52 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 40/50
+2025-06-06 22:11:55 INFO     Test_epoch 40, Horizon 12: Val MAE 4.41821, Val MAPE 10.11%
+2025-06-06 22:11:55 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 41/50
+2025-06-06 22:11:57 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 42/50
+2025-06-06 22:12:00 INFO     Test_epoch 42, Horizon 12: Val MAE 4.30430, Val MAPE 9.74%
+2025-06-06 22:12:00 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 43/50
+2025-06-06 22:12:01 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 44/50
+2025-06-06 22:12:04 INFO     Test_epoch 44, Horizon 12: Val MAE 4.46900, Val MAPE 10.01%
+2025-06-06 22:12:04 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 45/50
+2025-06-06 22:12:05 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 46/50
+2025-06-06 22:12:08 INFO     Test_epoch 46, Horizon 12: Val MAE 4.25238, Val MAPE 9.59%
+2025-06-06 22:12:08 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 47/50
+2025-06-06 22:12:10 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 48/50
+2025-06-06 22:12:13 INFO     Test_epoch 48, Horizon 12: Val MAE 4.43841, Val MAPE 9.83%
+2025-06-06 22:12:13 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 49/50
+2025-06-06 22:12:14 INFO     MetaEpoch: 3, Target City: metr-la, TestEpoch: 50/50
+2025-06-06 22:12:17 INFO     Test_epoch 50, Horizon 12: Val MAE 4.51693, Val MAPE 9.99%
+2025-06-06 22:12:17 INFO     ========== Meta Epoch 4/5 ==========
+2025-06-06 22:12:17 INFO     MetaEpoch: 4, City: chengdu, CityEpoch: 1/1
+2025-06-06 22:13:07 INFO     MetaEpoch: 4, City: chengdu, Horizon: 12, Val MAE: 2.56702, Val MAPE: 11.68%
+2025-06-06 22:13:07 INFO     MetaEpoch: 4, City: pems-bay, CityEpoch: 1/1
+2025-06-06 22:14:38 INFO     MetaEpoch: 4, City: pems-bay, Horizon: 12, Val MAE: 1.71566, Val MAPE: 3.17%
+2025-06-06 22:14:38 INFO     MetaEpoch: 4, City: shenzhen, CityEpoch: 1/1
+2025-06-06 22:15:38 INFO     MetaEpoch: 4, City: shenzhen, Horizon: 12, Val MAE: 2.31181, Val MAPE: 9.80%
+2025-06-06 22:15:38 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 1/50
+2025-06-06 22:15:40 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 2/50
+2025-06-06 22:15:43 INFO     Test_epoch 2, Horizon 12: Val MAE 3.80600, Val MAPE 9.15%
+2025-06-06 22:15:43 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 3/50
+2025-06-06 22:15:44 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 4/50
+2025-06-06 22:15:47 INFO     Test_epoch 4, Horizon 12: Val MAE 3.56979, Val MAPE 8.37%
+2025-06-06 22:15:47 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 5/50
+2025-06-06 22:15:49 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 6/50
+2025-06-06 22:15:52 INFO     Test_epoch 6, Horizon 12: Val MAE 3.57766, Val MAPE 8.43%
+2025-06-06 22:15:52 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 7/50
+2025-06-06 22:15:53 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 8/50
+2025-06-06 22:15:56 INFO     Test_epoch 8, Horizon 12: Val MAE 3.45334, Val MAPE 8.15%
+2025-06-06 22:15:56 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 9/50
+2025-06-06 22:15:58 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 10/50
+2025-06-06 22:16:01 INFO     Test_epoch 10, Horizon 12: Val MAE 3.47276, Val MAPE 8.15%
+2025-06-06 22:16:01 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 11/50
+2025-06-06 22:16:02 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 12/50
+2025-06-06 22:16:05 INFO     Test_epoch 12, Horizon 12: Val MAE 3.55499, Val MAPE 8.48%
+2025-06-06 22:16:05 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 13/50
+2025-06-06 22:16:07 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 14/50
+2025-06-06 22:16:10 INFO     Test_epoch 14, Horizon 12: Val MAE 3.60432, Val MAPE 8.47%
+2025-06-06 22:16:10 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 15/50
+2025-06-06 22:16:11 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 16/50
+2025-06-06 22:16:14 INFO     Test_epoch 16, Horizon 12: Val MAE 3.67933, Val MAPE 8.44%
+2025-06-06 22:16:14 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 17/50
+2025-06-06 22:16:16 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 18/50
+2025-06-06 22:16:19 INFO     Test_epoch 18, Horizon 12: Val MAE 3.71940, Val MAPE 8.44%
+2025-06-06 22:16:19 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 19/50
+2025-06-06 22:16:20 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 20/50
+2025-06-06 22:16:23 INFO     Test_epoch 20, Horizon 12: Val MAE 4.19449, Val MAPE 9.15%
+2025-06-06 22:16:23 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 21/50
+2025-06-06 22:16:24 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 22/50
+2025-06-06 22:16:28 INFO     Test_epoch 22, Horizon 12: Val MAE 3.95917, Val MAPE 9.35%
+2025-06-06 22:16:28 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 23/50
+2025-06-06 22:16:29 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 24/50
+2025-06-06 22:16:32 INFO     Test_epoch 24, Horizon 12: Val MAE 4.12523, Val MAPE 9.64%
+2025-06-06 22:16:32 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 25/50
+2025-06-06 22:16:33 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 26/50
+2025-06-06 22:16:37 INFO     Test_epoch 26, Horizon 12: Val MAE 4.22629, Val MAPE 9.37%
+2025-06-06 22:16:37 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 27/50
+2025-06-06 22:16:38 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 28/50
+2025-06-06 22:16:41 INFO     Test_epoch 28, Horizon 12: Val MAE 4.01587, Val MAPE 9.01%
+2025-06-06 22:16:41 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 29/50
+2025-06-06 22:16:42 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 30/50
+2025-06-06 22:16:46 INFO     Test_epoch 30, Horizon 12: Val MAE 4.27106, Val MAPE 9.53%
+2025-06-06 22:16:46 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 31/50
+2025-06-06 22:16:47 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 32/50
+2025-06-06 22:16:50 INFO     Test_epoch 32, Horizon 12: Val MAE 4.38034, Val MAPE 10.05%
+2025-06-06 22:16:50 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 33/50
+2025-06-06 22:16:52 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 34/50
+2025-06-06 22:16:55 INFO     Test_epoch 34, Horizon 12: Val MAE 4.29534, Val MAPE 9.90%
+2025-06-06 22:16:55 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 35/50
+2025-06-06 22:16:56 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 36/50
+2025-06-06 22:17:00 INFO     Test_epoch 36, Horizon 12: Val MAE 4.16496, Val MAPE 9.55%
+2025-06-06 22:17:00 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 37/50
+2025-06-06 22:17:01 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 38/50
+2025-06-06 22:17:04 INFO     Test_epoch 38, Horizon 12: Val MAE 4.47931, Val MAPE 9.89%
+2025-06-06 22:17:04 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 39/50
+2025-06-06 22:17:05 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 40/50
+2025-06-06 22:17:09 INFO     Test_epoch 40, Horizon 12: Val MAE 4.21056, Val MAPE 9.64%
+2025-06-06 22:17:09 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 41/50
+2025-06-06 22:17:10 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 42/50
+2025-06-06 22:17:13 INFO     Test_epoch 42, Horizon 12: Val MAE 4.35097, Val MAPE 9.52%
+2025-06-06 22:17:13 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 43/50
+2025-06-06 22:17:15 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 44/50
+2025-06-06 22:17:18 INFO     Test_epoch 44, Horizon 12: Val MAE 4.56801, Val MAPE 10.11%
+2025-06-06 22:17:18 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 45/50
+2025-06-06 22:17:19 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 46/50
+2025-06-06 22:17:22 INFO     Test_epoch 46, Horizon 12: Val MAE 4.44330, Val MAPE 9.92%
+2025-06-06 22:17:22 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 47/50
+2025-06-06 22:17:24 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 48/50
+2025-06-06 22:17:27 INFO     Test_epoch 48, Horizon 12: Val MAE 4.49818, Val MAPE 10.29%
+2025-06-06 22:17:27 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 49/50
+2025-06-06 22:17:28 INFO     MetaEpoch: 4, Target City: metr-la, TestEpoch: 50/50
+2025-06-06 22:17:32 INFO     Test_epoch 50, Horizon 12: Val MAE 4.48354, Val MAPE 9.92%
+2025-06-06 22:17:32 INFO     ========== Meta Epoch 5/5 ==========
+2025-06-06 22:17:32 INFO     MetaEpoch: 5, City: chengdu, CityEpoch: 1/1
+2025-06-06 22:18:18 INFO     MetaEpoch: 5, City: pems-bay, CityEpoch: 1/1
+2025-06-06 22:19:43 INFO     MetaEpoch: 5, City: shenzhen, CityEpoch: 1/1
+2025-06-06 22:20:40 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 1/50
+2025-06-06 22:20:42 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 2/50
+2025-06-06 22:20:45 INFO     Test_epoch 2, Horizon 12: Val MAE 3.57965, Val MAPE 8.44%
+2025-06-06 22:20:45 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 3/50
+2025-06-06 22:20:46 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 4/50
+2025-06-06 22:20:49 INFO     Test_epoch 4, Horizon 12: Val MAE 3.56508, Val MAPE 8.23%
+2025-06-06 22:20:50 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 5/50
+2025-06-06 22:20:51 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 6/50
+2025-06-06 22:20:54 INFO     Test_epoch 6, Horizon 12: Val MAE 3.68532, Val MAPE 9.37%
+2025-06-06 22:20:54 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 7/50
+2025-06-06 22:20:55 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 8/50
+2025-06-06 22:20:58 INFO     Test_epoch 8, Horizon 12: Val MAE 3.44792, Val MAPE 8.16%
+2025-06-06 22:20:58 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 9/50
+2025-06-06 22:21:00 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 10/50
+2025-06-06 22:21:03 INFO     Test_epoch 10, Horizon 12: Val MAE 3.49782, Val MAPE 8.45%
+2025-06-06 22:21:03 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 11/50
+2025-06-06 22:21:04 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 12/50
+2025-06-06 22:21:07 INFO     Test_epoch 12, Horizon 12: Val MAE 3.70717, Val MAPE 8.59%
+2025-06-06 22:21:07 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 13/50
+2025-06-06 22:21:09 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 14/50
+2025-06-06 22:21:12 INFO     Test_epoch 14, Horizon 12: Val MAE 3.63898, Val MAPE 8.57%
+2025-06-06 22:21:12 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 15/50
+2025-06-06 22:21:13 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 16/50
+2025-06-06 22:21:16 INFO     Test_epoch 16, Horizon 12: Val MAE 3.64658, Val MAPE 8.71%
+2025-06-06 22:21:16 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 17/50
+2025-06-06 22:21:18 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 18/50
+2025-06-06 22:21:21 INFO     Test_epoch 18, Horizon 12: Val MAE 3.66659, Val MAPE 8.20%
+2025-06-06 22:21:21 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 19/50
+2025-06-06 22:21:22 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 20/50
+2025-06-06 22:21:25 INFO     Test_epoch 20, Horizon 12: Val MAE 3.84240, Val MAPE 8.53%
+2025-06-06 22:21:25 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 21/50
+2025-06-06 22:21:26 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 22/50
+2025-06-06 22:21:30 INFO     Test_epoch 22, Horizon 12: Val MAE 3.94050, Val MAPE 9.20%
+2025-06-06 22:21:30 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 23/50
+2025-06-06 22:21:31 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 24/50
+2025-06-06 22:21:34 INFO     Test_epoch 24, Horizon 12: Val MAE 4.09778, Val MAPE 9.20%
+2025-06-06 22:21:34 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 25/50
+2025-06-06 22:21:35 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 26/50
+2025-06-06 22:21:39 INFO     Test_epoch 26, Horizon 12: Val MAE 4.29265, Val MAPE 9.82%
+2025-06-06 22:21:39 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 27/50
+2025-06-06 22:21:40 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 28/50
+2025-06-06 22:21:43 INFO     Test_epoch 28, Horizon 12: Val MAE 4.01238, Val MAPE 8.95%
+2025-06-06 22:21:43 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 29/50
+2025-06-06 22:21:44 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 30/50
+2025-06-06 22:21:47 INFO     Test_epoch 30, Horizon 12: Val MAE 4.21682, Val MAPE 9.55%
+2025-06-06 22:21:47 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 31/50
+2025-06-06 22:21:49 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 32/50
+2025-06-06 22:21:52 INFO     Test_epoch 32, Horizon 12: Val MAE 4.27534, Val MAPE 9.85%
+2025-06-06 22:21:52 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 33/50
+2025-06-06 22:21:53 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 34/50
+2025-06-06 22:21:56 INFO     Test_epoch 34, Horizon 12: Val MAE 4.28979, Val MAPE 9.46%
+2025-06-06 22:21:56 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 35/50
+2025-06-06 22:21:57 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 36/50
+2025-06-06 22:22:01 INFO     Test_epoch 36, Horizon 12: Val MAE 4.31531, Val MAPE 9.99%
+2025-06-06 22:22:01 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 37/50
+2025-06-06 22:22:02 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 38/50
+2025-06-06 22:22:05 INFO     Test_epoch 38, Horizon 12: Val MAE 4.54743, Val MAPE 9.74%
+2025-06-06 22:22:05 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 39/50
+2025-06-06 22:22:06 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 40/50
+2025-06-06 22:22:10 INFO     Test_epoch 40, Horizon 12: Val MAE 4.30682, Val MAPE 9.76%
+2025-06-06 22:22:10 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 41/50
+2025-06-06 22:22:11 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 42/50
+2025-06-06 22:22:14 INFO     Test_epoch 42, Horizon 12: Val MAE 4.23711, Val MAPE 9.50%
+2025-06-06 22:22:14 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 43/50
+2025-06-06 22:22:15 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 44/50
+2025-06-06 22:22:19 INFO     Test_epoch 44, Horizon 12: Val MAE 4.52965, Val MAPE 10.23%
+2025-06-06 22:22:19 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 45/50
+2025-06-06 22:22:20 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 46/50
+2025-06-06 22:22:24 INFO     Test_epoch 46, Horizon 12: Val MAE 4.35049, Val MAPE 9.57%
+2025-06-06 22:22:24 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 47/50
+2025-06-06 22:22:25 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 48/50
+2025-06-06 22:22:28 INFO     Test_epoch 48, Horizon 12: Val MAE 4.30974, Val MAPE 9.90%
+2025-06-06 22:22:28 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 49/50
+2025-06-06 22:22:29 INFO     MetaEpoch: 5, Target City: metr-la, TestEpoch: 50/50
+2025-06-06 22:22:33 INFO     Test_epoch 50, Horizon 12: Val MAE 4.32870, Val MAPE 9.63%
+2025-06-06 22:22:33 INFO     ========== Final Evaluation ==========
+2025-06-06 22:22:33 INFO     Loaded best model for final evaluation
+2025-06-06 22:22:35 INFO     ========== Validation Results (基于原始尺度) ==========
+2025-06-06 22:22:35 INFO     Horizon 12: MAE=3.429, MAPE=8.099%, MSE=43.612, RMSE=6.604
+2025-06-06 22:22:35 INFO     ========== Test Results with Statistical Significance (基于原始尺度) ==========
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2285: RuntimeWarning: invalid value encountered in multiply
+  lower_bound = _a * scale + loc
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2286: RuntimeWarning: invalid value encountered in multiply
+  upper_bound = _b * scale + loc
+2025-06-06 22:22:56 INFO     Horizon 12:
+2025-06-06 22:22:56 INFO       MAE: 3.638 ± 0.000
+2025-06-06 22:22:56 INFO       MAPE: 8.820 ± 0.000
+2025-06-06 22:22:56 INFO       MSE: 47.597 ± 0.000
+2025-06-06 22:22:56 INFO       RMSE: 6.899 ± 0.000
+2025-06-06 22:22:56 INFO     Training completed successfully!
+2025-06-06 22:22:56 INFO     🎯 所有评估指标都基于反归一化后的原始数据尺度
+Horizon 12 MAE: 3.638 ± 0.000 (95% CI: [nan, nan])
+Horizon 12 MSE: 47.597 ± 0.000 (95% CI: [nan, nan])
+Horizon 12 RMSE: 6.899 ± 0.000 (95% CI: [nan, nan])
+Horizon 12 MAPE: 8.820 ± 0.000 (95% CI: [nan, nan])

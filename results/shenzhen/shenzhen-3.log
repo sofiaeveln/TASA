@@ -1,0 +1,447 @@
+nohup: 忽略输入
+2025-06-06 21:26:41 INFO     Configuration loaded:
+2025-06-06 21:26:41 INFO     {'data': {'datapath': '/root/ggg/DATA/data', 'train_cities': ['chengdu', 'pems-bay', 'metr-la'], 'target_city': 'shenzhen', 'seq_len': 12, 'horizons': [3], 'steps_per_day': 144, 'adaptation_days': 3}, 'model': {'n_layer': 6, 'n_head': 4, 'n_embd': 64, 'dropout': 0.1, 'bias': False, 'n_linear': 1, 'input_dim': 2, 'tod_embedding_dim': 10, 'dow_embedding_dim': 6, 'spatial_embedding_dim': 48, 'adaptive_embedding_dim': 24, 'output_dim': 1, 'temporal_layers': 2, 'spatial_layers': 2, 'blocksize': 8, 'blocknum': 4, 'factors': 1}, 'optimization': {'meta_lr': 5e-05, 'update_lr': 0.001, 'meta_epochs': 5, 'city_epochs': 1, 'test_epochs': 50, 'batch_size': 32, 'grad_clip': 1.0, 'weight_decay': 0, 'use_lora': True, 'lora_rank': 32, 'use_flash_attn': False, 'gradient_checkpointing': False, 'mixed_precision': True, 'dtype': 'float32'}, 'training': {'seed': 42, 'cuda': '3', 'eval_interval': 2, 'eval_only': False, 'enable_significance_test': True, 'num_test_runs': 5, 'domain_specific_params': ['value_mlp', 'value_transform']}, 'output': {'out_dir': 'out/improved_main', 'log_dir': 'logs', 'save_best': True, 'save_last': True}}
+2025-06-06 21:26:41 INFO     使用input_dim=2，只使用交通数据特征
+2025-06-06 21:26:41 INFO     自动生成时间特征: TOD=10, DOW=6
+2025-06-06 21:27:12 INFO     Using limited data for target city shenzhen: 3 days for adaptation
+2025-06-06 21:27:54 INFO     Maximum blocknum across cities: 79
+2025-06-06 21:27:54 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:27:54 INFO     Model initialized with 0.45M parameters
+2025-06-06 21:27:54 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:27:54 INFO     Model initialized with 0.42M parameters
+2025-06-06 21:27:56 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:27:56 INFO     Model initialized with 0.35M parameters
+2025-06-06 21:27:56 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:27:56 INFO     Model initialized with 0.31M parameters
+2025-06-06 21:27:56 INFO     Parameter groups - Shared: 12, Private: 54, Domain-specific: 0
+2025-06-06 21:27:56 INFO     Model initialized with 0.45M parameters
+2025-06-06 21:27:56 INFO     ========== Meta Epoch 1/5 ==========
+2025-06-06 21:27:56 INFO     MetaEpoch: 1, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:28:45 INFO     MetaEpoch: 1, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:30:13 INFO     MetaEpoch: 1, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:30:52 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 1/50
+2025-06-06 21:30:56 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 2/50
+2025-06-06 21:31:03 INFO     Test_epoch 2, Horizon 3: Val MAE 2.44005, Val MAPE 9.43%
+2025-06-06 21:31:03 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:31:03 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 3/50
+2025-06-06 21:31:06 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 4/50
+2025-06-06 21:31:13 INFO     Test_epoch 4, Horizon 3: Val MAE 2.13106, Val MAPE 8.36%
+2025-06-06 21:31:13 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:31:13 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 5/50
+2025-06-06 21:31:17 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 6/50
+2025-06-06 21:31:23 INFO     Test_epoch 6, Horizon 3: Val MAE 2.30423, Val MAPE 9.13%
+2025-06-06 21:31:23 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 7/50
+2025-06-06 21:31:27 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 8/50
+2025-06-06 21:31:33 INFO     Test_epoch 8, Horizon 3: Val MAE 2.09998, Val MAPE 8.49%
+2025-06-06 21:31:33 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:31:33 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 9/50
+2025-06-06 21:31:37 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 10/50
+2025-06-06 21:31:43 INFO     Test_epoch 10, Horizon 3: Val MAE 2.12560, Val MAPE 8.38%
+2025-06-06 21:31:43 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 11/50
+2025-06-06 21:31:47 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 12/50
+2025-06-06 21:31:54 INFO     Test_epoch 12, Horizon 3: Val MAE 2.04978, Val MAPE 8.30%
+2025-06-06 21:31:54 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:31:54 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 13/50
+2025-06-06 21:31:57 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 14/50
+2025-06-06 21:32:04 INFO     Test_epoch 14, Horizon 3: Val MAE 2.00042, Val MAPE 8.14%
+2025-06-06 21:32:04 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:32:04 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 15/50
+2025-06-06 21:32:07 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 16/50
+2025-06-06 21:32:14 INFO     Test_epoch 16, Horizon 3: Val MAE 2.05434, Val MAPE 8.06%
+2025-06-06 21:32:14 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 17/50
+2025-06-06 21:32:18 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 18/50
+2025-06-06 21:32:24 INFO     Test_epoch 18, Horizon 3: Val MAE 2.13305, Val MAPE 8.45%
+2025-06-06 21:32:24 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 19/50
+2025-06-06 21:32:28 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 20/50
+2025-06-06 21:32:34 INFO     Test_epoch 20, Horizon 3: Val MAE 2.02367, Val MAPE 7.98%
+2025-06-06 21:32:34 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 21/50
+2025-06-06 21:32:38 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 22/50
+2025-06-06 21:32:45 INFO     Test_epoch 22, Horizon 3: Val MAE 2.16896, Val MAPE 8.74%
+2025-06-06 21:32:45 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 23/50
+2025-06-06 21:32:48 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 24/50
+2025-06-06 21:32:55 INFO     Test_epoch 24, Horizon 3: Val MAE 1.98486, Val MAPE 7.96%
+2025-06-06 21:32:55 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:32:55 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 25/50
+2025-06-06 21:32:59 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 26/50
+2025-06-06 21:33:05 INFO     Test_epoch 26, Horizon 3: Val MAE 2.05371, Val MAPE 8.34%
+2025-06-06 21:33:05 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 27/50
+2025-06-06 21:33:09 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 28/50
+2025-06-06 21:33:15 INFO     Test_epoch 28, Horizon 3: Val MAE 1.97631, Val MAPE 7.90%
+2025-06-06 21:33:15 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:33:15 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 29/50
+2025-06-06 21:33:19 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 30/50
+2025-06-06 21:33:25 INFO     Test_epoch 30, Horizon 3: Val MAE 1.97744, Val MAPE 7.93%
+2025-06-06 21:33:25 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 31/50
+2025-06-06 21:33:29 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 32/50
+2025-06-06 21:33:35 INFO     Test_epoch 32, Horizon 3: Val MAE 1.99772, Val MAPE 8.00%
+2025-06-06 21:33:35 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 33/50
+2025-06-06 21:33:39 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 34/50
+2025-06-06 21:33:45 INFO     Test_epoch 34, Horizon 3: Val MAE 2.02368, Val MAPE 8.00%
+2025-06-06 21:33:45 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 35/50
+2025-06-06 21:33:49 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 36/50
+2025-06-06 21:33:56 INFO     Test_epoch 36, Horizon 3: Val MAE 1.97173, Val MAPE 7.88%
+2025-06-06 21:33:56 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:33:56 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 37/50
+2025-06-06 21:33:59 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 38/50
+2025-06-06 21:34:06 INFO     Test_epoch 38, Horizon 3: Val MAE 2.03350, Val MAPE 8.12%
+2025-06-06 21:34:06 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 39/50
+2025-06-06 21:34:09 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 40/50
+2025-06-06 21:34:16 INFO     Test_epoch 40, Horizon 3: Val MAE 1.99191, Val MAPE 7.90%
+2025-06-06 21:34:16 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 41/50
+2025-06-06 21:34:20 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 42/50
+2025-06-06 21:34:26 INFO     Test_epoch 42, Horizon 3: Val MAE 2.03099, Val MAPE 7.99%
+2025-06-06 21:34:26 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 43/50
+2025-06-06 21:34:30 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 44/50
+2025-06-06 21:34:36 INFO     Test_epoch 44, Horizon 3: Val MAE 1.96912, Val MAPE 7.87%
+2025-06-06 21:34:36 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 45/50
+2025-06-06 21:34:40 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 46/50
+2025-06-06 21:34:46 INFO     Test_epoch 46, Horizon 3: Val MAE 1.99896, Val MAPE 7.90%
+2025-06-06 21:34:46 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 47/50
+2025-06-06 21:34:50 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 48/50
+2025-06-06 21:34:57 INFO     Test_epoch 48, Horizon 3: Val MAE 1.96832, Val MAPE 7.87%
+2025-06-06 21:34:57 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 49/50
+2025-06-06 21:35:00 INFO     MetaEpoch: 1, Target City: shenzhen, TestEpoch: 50/50
+2025-06-06 21:35:07 INFO     Test_epoch 50, Horizon 3: Val MAE 1.97236, Val MAPE 7.89%
+2025-06-06 21:35:07 INFO     ========== Meta Epoch 2/5 ==========
+2025-06-06 21:35:07 INFO     MetaEpoch: 2, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:35:57 INFO     MetaEpoch: 2, City: chengdu, Horizon: 3, Val MAE: 2.26802, Val MAPE: 10.05%
+2025-06-06 21:35:57 INFO     MetaEpoch: 2, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:37:28 INFO     MetaEpoch: 2, City: pems-bay, Horizon: 3, Val MAE: 1.16215, Val MAPE: 2.07%
+2025-06-06 21:37:28 INFO     MetaEpoch: 2, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:38:08 INFO     MetaEpoch: 2, City: metr-la, Horizon: 3, Val MAE: 2.47981, Val MAPE: 5.38%
+2025-06-06 21:38:08 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 1/50
+2025-06-06 21:38:12 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 2/50
+2025-06-06 21:38:18 INFO     Test_epoch 2, Horizon 3: Val MAE 2.66480, Val MAPE 11.41%
+2025-06-06 21:38:18 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 3/50
+2025-06-06 21:38:22 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 4/50
+2025-06-06 21:38:28 INFO     Test_epoch 4, Horizon 3: Val MAE 2.19933, Val MAPE 8.54%
+2025-06-06 21:38:28 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 5/50
+2025-06-06 21:38:32 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 6/50
+2025-06-06 21:38:39 INFO     Test_epoch 6, Horizon 3: Val MAE 2.35340, Val MAPE 9.15%
+2025-06-06 21:38:39 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 7/50
+2025-06-06 21:38:42 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 8/50
+2025-06-06 21:38:49 INFO     Test_epoch 8, Horizon 3: Val MAE 2.11930, Val MAPE 8.47%
+2025-06-06 21:38:49 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 9/50
+2025-06-06 21:38:52 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 10/50
+2025-06-06 21:38:59 INFO     Test_epoch 10, Horizon 3: Val MAE 2.12701, Val MAPE 8.29%
+2025-06-06 21:38:59 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 11/50
+2025-06-06 21:39:02 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 12/50
+2025-06-06 21:39:09 INFO     Test_epoch 12, Horizon 3: Val MAE 2.21004, Val MAPE 9.15%
+2025-06-06 21:39:09 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 13/50
+2025-06-06 21:39:13 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 14/50
+2025-06-06 21:39:19 INFO     Test_epoch 14, Horizon 3: Val MAE 2.07360, Val MAPE 8.17%
+2025-06-06 21:39:19 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 15/50
+2025-06-06 21:39:23 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 16/50
+2025-06-06 21:39:29 INFO     Test_epoch 16, Horizon 3: Val MAE 2.03804, Val MAPE 8.20%
+2025-06-06 21:39:29 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 17/50
+2025-06-06 21:39:33 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 18/50
+2025-06-06 21:39:39 INFO     Test_epoch 18, Horizon 3: Val MAE 2.00849, Val MAPE 7.92%
+2025-06-06 21:39:39 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 19/50
+2025-06-06 21:39:43 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 20/50
+2025-06-06 21:39:49 INFO     Test_epoch 20, Horizon 3: Val MAE 2.02380, Val MAPE 8.20%
+2025-06-06 21:39:49 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 21/50
+2025-06-06 21:39:53 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 22/50
+2025-06-06 21:39:59 INFO     Test_epoch 22, Horizon 3: Val MAE 2.09063, Val MAPE 8.38%
+2025-06-06 21:39:59 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 23/50
+2025-06-06 21:40:03 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 24/50
+2025-06-06 21:40:10 INFO     Test_epoch 24, Horizon 3: Val MAE 2.07772, Val MAPE 8.12%
+2025-06-06 21:40:10 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 25/50
+2025-06-06 21:40:13 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 26/50
+2025-06-06 21:40:20 INFO     Test_epoch 26, Horizon 3: Val MAE 2.14701, Val MAPE 8.41%
+2025-06-06 21:40:20 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 27/50
+2025-06-06 21:40:23 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 28/50
+2025-06-06 21:40:30 INFO     Test_epoch 28, Horizon 3: Val MAE 2.06962, Val MAPE 8.31%
+2025-06-06 21:40:30 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 29/50
+2025-06-06 21:40:34 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 30/50
+2025-06-06 21:40:40 INFO     Test_epoch 30, Horizon 3: Val MAE 2.00916, Val MAPE 7.97%
+2025-06-06 21:40:40 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 31/50
+2025-06-06 21:40:44 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 32/50
+2025-06-06 21:40:50 INFO     Test_epoch 32, Horizon 3: Val MAE 1.97550, Val MAPE 7.88%
+2025-06-06 21:40:50 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 33/50
+2025-06-06 21:40:54 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 34/50
+2025-06-06 21:41:00 INFO     Test_epoch 34, Horizon 3: Val MAE 1.97770, Val MAPE 7.88%
+2025-06-06 21:41:00 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 35/50
+2025-06-06 21:41:04 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 36/50
+2025-06-06 21:41:10 INFO     Test_epoch 36, Horizon 3: Val MAE 1.99672, Val MAPE 7.99%
+2025-06-06 21:41:10 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 37/50
+2025-06-06 21:41:14 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 38/50
+2025-06-06 21:41:21 INFO     Test_epoch 38, Horizon 3: Val MAE 1.99064, Val MAPE 7.89%
+2025-06-06 21:41:21 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 39/50
+2025-06-06 21:41:24 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 40/50
+2025-06-06 21:41:31 INFO     Test_epoch 40, Horizon 3: Val MAE 1.98795, Val MAPE 7.94%
+2025-06-06 21:41:31 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 41/50
+2025-06-06 21:41:34 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 42/50
+2025-06-06 21:41:41 INFO     Test_epoch 42, Horizon 3: Val MAE 1.98211, Val MAPE 8.02%
+2025-06-06 21:41:41 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 43/50
+2025-06-06 21:41:44 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 44/50
+2025-06-06 21:41:51 INFO     Test_epoch 44, Horizon 3: Val MAE 1.99246, Val MAPE 7.98%
+2025-06-06 21:41:51 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 45/50
+2025-06-06 21:41:55 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 46/50
+2025-06-06 21:42:01 INFO     Test_epoch 46, Horizon 3: Val MAE 2.09407, Val MAPE 8.23%
+2025-06-06 21:42:01 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 47/50
+2025-06-06 21:42:05 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 48/50
+2025-06-06 21:42:11 INFO     Test_epoch 48, Horizon 3: Val MAE 2.00506, Val MAPE 8.01%
+2025-06-06 21:42:11 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 49/50
+2025-06-06 21:42:15 INFO     MetaEpoch: 2, Target City: shenzhen, TestEpoch: 50/50
+2025-06-06 21:42:21 INFO     Test_epoch 50, Horizon 3: Val MAE 1.98990, Val MAPE 8.03%
+2025-06-06 21:42:21 INFO     ========== Meta Epoch 3/5 ==========
+2025-06-06 21:42:21 INFO     MetaEpoch: 3, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:43:09 INFO     MetaEpoch: 3, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:44:36 INFO     MetaEpoch: 3, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:45:13 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 1/50
+2025-06-06 21:45:17 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 2/50
+2025-06-06 21:45:24 INFO     Test_epoch 2, Horizon 3: Val MAE 2.51024, Val MAPE 10.45%
+2025-06-06 21:45:24 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 3/50
+2025-06-06 21:45:28 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 4/50
+2025-06-06 21:45:34 INFO     Test_epoch 4, Horizon 3: Val MAE 2.33022, Val MAPE 9.68%
+2025-06-06 21:45:34 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 5/50
+2025-06-06 21:45:38 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 6/50
+2025-06-06 21:45:44 INFO     Test_epoch 6, Horizon 3: Val MAE 2.38702, Val MAPE 9.19%
+2025-06-06 21:45:44 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 7/50
+2025-06-06 21:45:48 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 8/50
+2025-06-06 21:45:54 INFO     Test_epoch 8, Horizon 3: Val MAE 2.20556, Val MAPE 8.85%
+2025-06-06 21:45:55 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 9/50
+2025-06-06 21:45:58 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 10/50
+2025-06-06 21:46:05 INFO     Test_epoch 10, Horizon 3: Val MAE 2.08736, Val MAPE 8.19%
+2025-06-06 21:46:05 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 11/50
+2025-06-06 21:46:08 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 12/50
+2025-06-06 21:46:15 INFO     Test_epoch 12, Horizon 3: Val MAE 2.06298, Val MAPE 8.13%
+2025-06-06 21:46:15 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 13/50
+2025-06-06 21:46:18 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 14/50
+2025-06-06 21:46:25 INFO     Test_epoch 14, Horizon 3: Val MAE 2.05659, Val MAPE 8.13%
+2025-06-06 21:46:25 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 15/50
+2025-06-06 21:46:29 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 16/50
+2025-06-06 21:46:35 INFO     Test_epoch 16, Horizon 3: Val MAE 2.00970, Val MAPE 8.16%
+2025-06-06 21:46:35 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 17/50
+2025-06-06 21:46:39 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 18/50
+2025-06-06 21:46:45 INFO     Test_epoch 18, Horizon 3: Val MAE 2.12126, Val MAPE 8.27%
+2025-06-06 21:46:45 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 19/50
+2025-06-06 21:46:49 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 20/50
+2025-06-06 21:46:55 INFO     Test_epoch 20, Horizon 3: Val MAE 2.03454, Val MAPE 8.09%
+2025-06-06 21:46:55 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 21/50
+2025-06-06 21:46:59 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 22/50
+2025-06-06 21:47:05 INFO     Test_epoch 22, Horizon 3: Val MAE 2.03338, Val MAPE 8.06%
+2025-06-06 21:47:05 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 23/50
+2025-06-06 21:47:09 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 24/50
+2025-06-06 21:47:15 INFO     Test_epoch 24, Horizon 3: Val MAE 2.07136, Val MAPE 8.46%
+2025-06-06 21:47:15 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 25/50
+2025-06-06 21:47:19 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 26/50
+2025-06-06 21:47:26 INFO     Test_epoch 26, Horizon 3: Val MAE 2.11850, Val MAPE 8.61%
+2025-06-06 21:47:26 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 27/50
+2025-06-06 21:47:29 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 28/50
+2025-06-06 21:47:36 INFO     Test_epoch 28, Horizon 3: Val MAE 1.98489, Val MAPE 7.89%
+2025-06-06 21:47:36 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 29/50
+2025-06-06 21:47:39 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 30/50
+2025-06-06 21:47:46 INFO     Test_epoch 30, Horizon 3: Val MAE 1.97487, Val MAPE 7.86%
+2025-06-06 21:47:46 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 31/50
+2025-06-06 21:47:49 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 32/50
+2025-06-06 21:47:56 INFO     Test_epoch 32, Horizon 3: Val MAE 2.00375, Val MAPE 8.15%
+2025-06-06 21:47:56 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 33/50
+2025-06-06 21:48:00 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 34/50
+2025-06-06 21:48:06 INFO     Test_epoch 34, Horizon 3: Val MAE 2.03967, Val MAPE 8.18%
+2025-06-06 21:48:06 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 35/50
+2025-06-06 21:48:10 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 36/50
+2025-06-06 21:48:16 INFO     Test_epoch 36, Horizon 3: Val MAE 1.97574, Val MAPE 7.87%
+2025-06-06 21:48:16 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 37/50
+2025-06-06 21:48:20 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 38/50
+2025-06-06 21:48:26 INFO     Test_epoch 38, Horizon 3: Val MAE 1.96802, Val MAPE 7.90%
+2025-06-06 21:48:26 INFO     Saving best checkpoint to out/improved_main/shenzhen-s42_best.pth
+2025-06-06 21:48:26 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 39/50
+2025-06-06 21:48:30 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 40/50
+2025-06-06 21:48:36 INFO     Test_epoch 40, Horizon 3: Val MAE 1.98111, Val MAPE 7.85%
+2025-06-06 21:48:36 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 41/50
+2025-06-06 21:48:40 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 42/50
+2025-06-06 21:48:46 INFO     Test_epoch 42, Horizon 3: Val MAE 2.01653, Val MAPE 8.09%
+2025-06-06 21:48:46 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 43/50
+2025-06-06 21:48:50 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 44/50
+2025-06-06 21:48:56 INFO     Test_epoch 44, Horizon 3: Val MAE 1.97419, Val MAPE 7.86%
+2025-06-06 21:48:56 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 45/50
+2025-06-06 21:49:00 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 46/50
+2025-06-06 21:49:07 INFO     Test_epoch 46, Horizon 3: Val MAE 1.98489, Val MAPE 8.03%
+2025-06-06 21:49:07 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 47/50
+2025-06-06 21:49:10 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 48/50
+2025-06-06 21:49:17 INFO     Test_epoch 48, Horizon 3: Val MAE 2.02338, Val MAPE 8.09%
+2025-06-06 21:49:17 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 49/50
+2025-06-06 21:49:20 INFO     MetaEpoch: 3, Target City: shenzhen, TestEpoch: 50/50
+2025-06-06 21:49:27 INFO     Test_epoch 50, Horizon 3: Val MAE 1.98836, Val MAPE 8.04%
+2025-06-06 21:49:27 INFO     ========== Meta Epoch 4/5 ==========
+2025-06-06 21:49:27 INFO     MetaEpoch: 4, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:50:17 INFO     MetaEpoch: 4, City: chengdu, Horizon: 3, Val MAE: 2.24103, Val MAPE: 9.92%
+2025-06-06 21:50:17 INFO     MetaEpoch: 4, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:51:49 INFO     MetaEpoch: 4, City: pems-bay, Horizon: 3, Val MAE: 1.17538, Val MAPE: 2.08%
+2025-06-06 21:51:49 INFO     MetaEpoch: 4, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:52:29 INFO     MetaEpoch: 4, City: metr-la, Horizon: 3, Val MAE: 2.49040, Val MAPE: 5.41%
+2025-06-06 21:52:29 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 1/50
+2025-06-06 21:52:33 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 2/50
+2025-06-06 21:52:40 INFO     Test_epoch 2, Horizon 3: Val MAE 2.36652, Val MAPE 9.04%
+2025-06-06 21:52:40 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 3/50
+2025-06-06 21:52:43 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 4/50
+2025-06-06 21:52:50 INFO     Test_epoch 4, Horizon 3: Val MAE 2.27673, Val MAPE 9.48%
+2025-06-06 21:52:50 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 5/50
+2025-06-06 21:52:54 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 6/50
+2025-06-06 21:53:00 INFO     Test_epoch 6, Horizon 3: Val MAE 2.25270, Val MAPE 9.22%
+2025-06-06 21:53:00 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 7/50
+2025-06-06 21:53:04 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 8/50
+2025-06-06 21:53:10 INFO     Test_epoch 8, Horizon 3: Val MAE 2.29016, Val MAPE 9.36%
+2025-06-06 21:53:10 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 9/50
+2025-06-06 21:53:14 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 10/50
+2025-06-06 21:53:20 INFO     Test_epoch 10, Horizon 3: Val MAE 2.02924, Val MAPE 8.13%
+2025-06-06 21:53:20 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 11/50
+2025-06-06 21:53:24 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 12/50
+2025-06-06 21:53:30 INFO     Test_epoch 12, Horizon 3: Val MAE 2.11559, Val MAPE 8.25%
+2025-06-06 21:53:30 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 13/50
+2025-06-06 21:53:34 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 14/50
+2025-06-06 21:53:40 INFO     Test_epoch 14, Horizon 3: Val MAE 2.14676, Val MAPE 8.40%
+2025-06-06 21:53:40 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 15/50
+2025-06-06 21:53:44 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 16/50
+2025-06-06 21:53:50 INFO     Test_epoch 16, Horizon 3: Val MAE 2.08249, Val MAPE 8.15%
+2025-06-06 21:53:50 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 17/50
+2025-06-06 21:53:54 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 18/50
+2025-06-06 21:54:01 INFO     Test_epoch 18, Horizon 3: Val MAE 2.03145, Val MAPE 8.01%
+2025-06-06 21:54:01 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 19/50
+2025-06-06 21:54:04 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 20/50
+2025-06-06 21:54:11 INFO     Test_epoch 20, Horizon 3: Val MAE 2.14981, Val MAPE 8.44%
+2025-06-06 21:54:11 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 21/50
+2025-06-06 21:54:14 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 22/50
+2025-06-06 21:54:21 INFO     Test_epoch 22, Horizon 3: Val MAE 2.06416, Val MAPE 8.19%
+2025-06-06 21:54:21 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 23/50
+2025-06-06 21:54:24 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 24/50
+2025-06-06 21:54:31 INFO     Test_epoch 24, Horizon 3: Val MAE 2.00677, Val MAPE 7.93%
+2025-06-06 21:54:31 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 25/50
+2025-06-06 21:54:35 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 26/50
+2025-06-06 21:54:41 INFO     Test_epoch 26, Horizon 3: Val MAE 2.07431, Val MAPE 8.38%
+2025-06-06 21:54:41 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 27/50
+2025-06-06 21:54:45 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 28/50
+2025-06-06 21:54:51 INFO     Test_epoch 28, Horizon 3: Val MAE 1.97734, Val MAPE 7.89%
+2025-06-06 21:54:51 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 29/50
+2025-06-06 21:54:55 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 30/50
+2025-06-06 21:55:01 INFO     Test_epoch 30, Horizon 3: Val MAE 2.03570, Val MAPE 7.97%
+2025-06-06 21:55:01 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 31/50
+2025-06-06 21:55:05 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 32/50
+2025-06-06 21:55:11 INFO     Test_epoch 32, Horizon 3: Val MAE 1.98932, Val MAPE 7.89%
+2025-06-06 21:55:11 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 33/50
+2025-06-06 21:55:15 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 34/50
+2025-06-06 21:55:21 INFO     Test_epoch 34, Horizon 3: Val MAE 2.01479, Val MAPE 8.16%
+2025-06-06 21:55:21 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 35/50
+2025-06-06 21:55:25 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 36/50
+2025-06-06 21:55:32 INFO     Test_epoch 36, Horizon 3: Val MAE 1.99868, Val MAPE 8.06%
+2025-06-06 21:55:32 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 37/50
+2025-06-06 21:55:35 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 38/50
+2025-06-06 21:55:42 INFO     Test_epoch 38, Horizon 3: Val MAE 1.97895, Val MAPE 7.93%
+2025-06-06 21:55:42 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 39/50
+2025-06-06 21:55:46 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 40/50
+2025-06-06 21:55:52 INFO     Test_epoch 40, Horizon 3: Val MAE 1.98737, Val MAPE 7.87%
+2025-06-06 21:55:52 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 41/50
+2025-06-06 21:55:56 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 42/50
+2025-06-06 21:56:02 INFO     Test_epoch 42, Horizon 3: Val MAE 1.99024, Val MAPE 7.91%
+2025-06-06 21:56:02 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 43/50
+2025-06-06 21:56:06 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 44/50
+2025-06-06 21:56:12 INFO     Test_epoch 44, Horizon 3: Val MAE 2.02144, Val MAPE 7.99%
+2025-06-06 21:56:12 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 45/50
+2025-06-06 21:56:16 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 46/50
+2025-06-06 21:56:23 INFO     Test_epoch 46, Horizon 3: Val MAE 1.97930, Val MAPE 7.91%
+2025-06-06 21:56:23 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 47/50
+2025-06-06 21:56:27 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 48/50
+2025-06-06 21:56:33 INFO     Test_epoch 48, Horizon 3: Val MAE 1.98354, Val MAPE 7.97%
+2025-06-06 21:56:33 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 49/50
+2025-06-06 21:56:37 INFO     MetaEpoch: 4, Target City: shenzhen, TestEpoch: 50/50
+2025-06-06 21:56:44 INFO     Test_epoch 50, Horizon 3: Val MAE 2.09003, Val MAPE 8.60%
+2025-06-06 21:56:44 INFO     ========== Meta Epoch 5/5 ==========
+2025-06-06 21:56:44 INFO     MetaEpoch: 5, City: chengdu, CityEpoch: 1/1
+2025-06-06 21:57:31 INFO     MetaEpoch: 5, City: pems-bay, CityEpoch: 1/1
+2025-06-06 21:58:58 INFO     MetaEpoch: 5, City: metr-la, CityEpoch: 1/1
+2025-06-06 21:59:36 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 1/50
+2025-06-06 21:59:40 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 2/50
+2025-06-06 21:59:46 INFO     Test_epoch 2, Horizon 3: Val MAE 2.37555, Val MAPE 9.27%
+2025-06-06 21:59:46 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 3/50
+2025-06-06 21:59:50 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 4/50
+2025-06-06 21:59:57 INFO     Test_epoch 4, Horizon 3: Val MAE 2.21284, Val MAPE 8.59%
+2025-06-06 21:59:57 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 5/50
+2025-06-06 22:00:00 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 6/50
+2025-06-06 22:00:07 INFO     Test_epoch 6, Horizon 3: Val MAE 2.15762, Val MAPE 8.75%
+2025-06-06 22:00:07 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 7/50
+2025-06-06 22:00:10 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 8/50
+2025-06-06 22:00:17 INFO     Test_epoch 8, Horizon 3: Val MAE 2.10959, Val MAPE 8.56%
+2025-06-06 22:00:17 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 9/50
+2025-06-06 22:00:21 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 10/50
+2025-06-06 22:00:27 INFO     Test_epoch 10, Horizon 3: Val MAE 2.09077, Val MAPE 8.55%
+2025-06-06 22:00:27 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 11/50
+2025-06-06 22:00:31 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 12/50
+2025-06-06 22:00:37 INFO     Test_epoch 12, Horizon 3: Val MAE 2.02399, Val MAPE 7.97%
+2025-06-06 22:00:37 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 13/50
+2025-06-06 22:00:41 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 14/50
+2025-06-06 22:00:47 INFO     Test_epoch 14, Horizon 3: Val MAE 2.08471, Val MAPE 8.40%
+2025-06-06 22:00:47 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 15/50
+2025-06-06 22:00:51 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 16/50
+2025-06-06 22:00:57 INFO     Test_epoch 16, Horizon 3: Val MAE 2.07682, Val MAPE 8.23%
+2025-06-06 22:00:57 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 17/50
+2025-06-06 22:01:01 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 18/50
+2025-06-06 22:01:07 INFO     Test_epoch 18, Horizon 3: Val MAE 1.99742, Val MAPE 7.99%
+2025-06-06 22:01:07 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 19/50
+2025-06-06 22:01:11 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 20/50
+2025-06-06 22:01:17 INFO     Test_epoch 20, Horizon 3: Val MAE 1.99088, Val MAPE 7.90%
+2025-06-06 22:01:17 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 21/50
+2025-06-06 22:01:21 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 22/50
+2025-06-06 22:01:28 INFO     Test_epoch 22, Horizon 3: Val MAE 2.07015, Val MAPE 8.49%
+2025-06-06 22:01:28 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 23/50
+2025-06-06 22:01:31 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 24/50
+2025-06-06 22:01:38 INFO     Test_epoch 24, Horizon 3: Val MAE 1.99459, Val MAPE 7.99%
+2025-06-06 22:01:38 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 25/50
+2025-06-06 22:01:41 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 26/50
+2025-06-06 22:01:48 INFO     Test_epoch 26, Horizon 3: Val MAE 2.03101, Val MAPE 8.07%
+2025-06-06 22:01:48 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 27/50
+2025-06-06 22:01:51 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 28/50
+2025-06-06 22:01:58 INFO     Test_epoch 28, Horizon 3: Val MAE 1.98759, Val MAPE 7.88%
+2025-06-06 22:01:58 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 29/50
+2025-06-06 22:02:01 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 30/50
+2025-06-06 22:02:08 INFO     Test_epoch 30, Horizon 3: Val MAE 1.99308, Val MAPE 7.97%
+2025-06-06 22:02:08 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 31/50
+2025-06-06 22:02:12 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 32/50
+2025-06-06 22:02:18 INFO     Test_epoch 32, Horizon 3: Val MAE 1.98516, Val MAPE 7.90%
+2025-06-06 22:02:18 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 33/50
+2025-06-06 22:02:22 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 34/50
+2025-06-06 22:02:28 INFO     Test_epoch 34, Horizon 3: Val MAE 2.01356, Val MAPE 8.06%
+2025-06-06 22:02:28 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 35/50
+2025-06-06 22:02:32 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 36/50
+2025-06-06 22:02:38 INFO     Test_epoch 36, Horizon 3: Val MAE 2.00013, Val MAPE 8.00%
+2025-06-06 22:02:38 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 37/50
+2025-06-06 22:02:42 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 38/50
+2025-06-06 22:02:48 INFO     Test_epoch 38, Horizon 3: Val MAE 2.00350, Val MAPE 8.08%
+2025-06-06 22:02:48 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 39/50
+2025-06-06 22:02:52 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 40/50
+2025-06-06 22:02:58 INFO     Test_epoch 40, Horizon 3: Val MAE 1.96825, Val MAPE 7.85%
+2025-06-06 22:02:58 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 41/50
+2025-06-06 22:03:02 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 42/50
+2025-06-06 22:03:09 INFO     Test_epoch 42, Horizon 3: Val MAE 1.99247, Val MAPE 8.04%
+2025-06-06 22:03:09 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 43/50
+2025-06-06 22:03:12 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 44/50
+2025-06-06 22:03:19 INFO     Test_epoch 44, Horizon 3: Val MAE 1.99849, Val MAPE 8.05%
+2025-06-06 22:03:19 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 45/50
+2025-06-06 22:03:22 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 46/50
+2025-06-06 22:03:29 INFO     Test_epoch 46, Horizon 3: Val MAE 2.00928, Val MAPE 8.23%
+2025-06-06 22:03:29 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 47/50
+2025-06-06 22:03:33 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 48/50
+2025-06-06 22:03:39 INFO     Test_epoch 48, Horizon 3: Val MAE 1.99118, Val MAPE 7.96%
+2025-06-06 22:03:39 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 49/50
+2025-06-06 22:03:43 INFO     MetaEpoch: 5, Target City: shenzhen, TestEpoch: 50/50
+2025-06-06 22:03:49 INFO     Test_epoch 50, Horizon 3: Val MAE 1.99855, Val MAPE 7.91%
+2025-06-06 22:03:49 INFO     ========== Final Evaluation ==========
+2025-06-06 22:03:49 INFO     Loaded best model for final evaluation
+2025-06-06 22:03:52 INFO     ========== Validation Results (基于原始尺度) ==========
+2025-06-06 22:03:52 INFO     Horizon 3: MAE=1.968, MAPE=7.896%, MSE=8.798, RMSE=2.966
+2025-06-06 22:03:52 INFO     ========== Test Results with Statistical Significance (基于原始尺度) ==========
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2285: RuntimeWarning: invalid value encountered in multiply
+  lower_bound = _a * scale + loc
+/datad/anaconda3/envs/yangy_env/lib/python3.10/site-packages/scipy/stats/_distn_infrastructure.py:2286: RuntimeWarning: invalid value encountered in multiply
+  upper_bound = _b * scale + loc
+2025-06-06 22:04:20 INFO     Horizon 3:
+2025-06-06 22:04:20 INFO       MAE: 2.027 ± 0.000
+2025-06-06 22:04:20 INFO       MAPE: 8.666 ± 0.000
+2025-06-06 22:04:20 INFO       MSE: 9.485 ± 0.000
+2025-06-06 22:04:20 INFO       RMSE: 3.080 ± 0.000
+2025-06-06 22:04:20 INFO     Training completed successfully!
+2025-06-06 22:04:20 INFO     🎯 所有评估指标都基于反归一化后的原始数据尺度
+Horizon 3 MAE: 2.027 ± 0.000 (95% CI: [nan, nan])
+Horizon 3 MSE: 9.485 ± 0.000 (95% CI: [nan, nan])
+Horizon 3 RMSE: 3.080 ± 0.000 (95% CI: [nan, nan])
+Horizon 3 MAPE: 8.666 ± 0.000 (95% CI: [nan, nan])
