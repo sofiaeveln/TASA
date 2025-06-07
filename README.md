@@ -177,7 +177,7 @@ DATA/data/
 - **dataset.npy**: Traffic data with shape `(T, N, C)` where:
   - `T`: Number of time steps
   - `N`: Number of traffic sensors/nodes
-  - `C`: Number of features (typically 2: speed + occupancy)
+  - `C`: Number of features 
 - **matrix.npy**: Adjacency matrix with shape `(N, N)` representing spatial relationships
 - **coords.npy**: Node coordinates with shape `(N, 2)` for geographic positioning
 
@@ -214,7 +214,6 @@ python main.py --config config/chengdu_config.yaml \
 
 ### 1. OptimizedTASA (Main Model)
 - **Semantic-Topological Decoupling**: Separates shared traffic semantics from city-specific topology
-- **Meta-Learning Framework**: Learns transferable patterns across multiple source cities
 - **Parameter Separation**: Distinguishes between shared, private, and domain-specific parameters
 
 ### 2. Spatio-Temporal Adaptive Embedding (STAE)
@@ -255,14 +254,6 @@ def generate_data(dataset, seq_len, horizons, split_ratios):
 def construct_adj_safe(data, num_node, train_ratio=0.7):
     # Use only training portion of data for correlation computation
 ```
-
-## Training Strategy
-
-### Meta-Learning Process
-1. **Source City Training**: Learn shared traffic patterns from multiple source cities
-2. **Meta-Parameter Update**: Update shared parameters using gradients from all source cities
-3. **Target City Adaptation**: Fine-tune on limited target city data
-4. **Dynamic Weighting**: Gradually increase target city loss weight during adaptation
 
 ### Optimization Features
 - **Gradient Clipping**: Prevents gradient explosion during meta-learning
